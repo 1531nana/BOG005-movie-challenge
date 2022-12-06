@@ -16,7 +16,7 @@ export const Card = ({ movies }: Props) => {
   >([]);
 
   return (
-    <main>
+    <main className="main-card">
       {movies ? (
         <div className="movies">
           {movies.map((movie) => (
@@ -31,7 +31,6 @@ export const Card = ({ movies }: Props) => {
                 <p>{movie.Title}</p>
               </div>
               <img src={movie.Poster} alt="" />
-              <button>details</button>
               {!movieDetail
                 ? ""
                 : movieDetail.map((res) => {

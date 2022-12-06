@@ -10,16 +10,16 @@ const apiKey = 'b08101fa'
 
 //obtener por título o ID y acceder a todas las propiedades ( t 'o' i)
 //obtener por año 
-export const getAllMovies = (title: string) => {
-   return makeRequestGetMoviesWithYear(title).then(mapFromApiToMovies)
+export const getAllMovies = (title: string, page: number) => {
+   return makeRequestGetMoviesWithYear(title, page).then(mapFromApiToMovies)
 }
 
 export const getOneMovie = (id: number) => {
     return makeRequestGetMovieId(id).then(mapFromApiToMovies)
 }
 
- const makeRequestGetMoviesWithYear = async (title: string):  Promise<Description[]> => {
-    const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&type=movie&y=${new Date().getFullYear()}`
+ const makeRequestGetMoviesWithYear = async (title: string, page: number):  Promise<Description[]> => {
+    const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&type=movie&y=${new Date().getFullYear()}&page=${page}`
     const response = await axios.get(urlRequest)
     return response.data.Search
 }
