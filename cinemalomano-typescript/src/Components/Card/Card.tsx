@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { getOneMovie } from "../../lib/request";
 import { Description} from '../../types'
 import './style.css'

@@ -6,10 +6,21 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useEffect, useState } from "react";
 import logo from '../../resources/logo.png'
-import search from '../../resources/search.png'
+// import search from '../../resources/search.png'
 import './style.css'
+import { Home } from "../Home/Home";
+import { Search } from "../Search/Search";
 
-export const Header = () => {
+interface stateInputSearch {
+  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
+   search: string,
+   pages: number,
+  request: (search: string, pages: number) => {}
+}
+
+export const Header: React.FC<stateInputSearch> = ({handleInput, search, pages, request}: stateInputSearch) => {
+
+
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
@@ -42,7 +53,7 @@ export const Header = () => {
             >
               <Offcanvas.Body>
                 <img src={logo} alt="" className="logo" />
-                <Form className="d-flex">
+                {/* <Form className="d-flex">
                   <Form.Control
                     type="search"
                     placeholder="Search"
@@ -50,7 +61,11 @@ export const Header = () => {
                     aria-label="Search"
                   />
                   <img src={search} alt="" className="search"/>
-                </Form>
+                </Form> */}
+                <div>
+
+                {/* <Search search={search} handleInput={handleInput} pages={pages} request={request}/> */}
+                </div>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">Home</Nav.Link>
                   <NavDropdown

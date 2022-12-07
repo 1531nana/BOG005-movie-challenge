@@ -4,8 +4,12 @@ import { Card } from "../Card/Card";
 import { Description } from "../../types";
 import arrowRight from "../../resources/arrow-right.png";
 import arrowLeft from "../../resources/arrow-left.png";
+import { Form } from "react-bootstrap";
+import searchImg from '../../resources/search.png'
+
 
 export const Home = () => {
+  
   interface HomeState {
     search: string;
     movies: Array<Description>;
@@ -27,34 +31,48 @@ export const Home = () => {
   return (
     <>
       <div>
-        <input
+        <Form className="d-flex">
+          <Form.Control
+            type="search"
+            placeholder="Search"
+            className="me-2"
+            aria-label="Search"
+            onChange={handleInput}
+            value={search}
+          />
+          <img src={searchImg} alt="" className="search"  onClick={() => {
+            getAllMovies(search, pages);
+          }} />
+        </Form>
+        {/* <input
           type="text"
           placeholder="Search"
           onChange={handleInput}
           value={search}
-        />
-        <button
+        /> */}
+        {/* <button
           onClick={() => {
             getAllMovies(search, pages);
           }}
         >
           View data
-        </button>
-        <Card movies={movies} />
+        </button> */}
       </div>
-      <img
-        src={arrowLeft}
-        alt="arrow-left"
-        className="arrow-left"
-        onClick={() => setPages(pages - 1)}
-      />
-      <img
-        src={arrowRight}
-        alt="arrow-right"
-        className="arrow-right"
-        onClick={() => setPages(pages + 1)}
-      />
-      
+      <div>
+        <Card movies={movies} />
+        <img
+          src={arrowLeft}
+          alt="arrow-left"
+          className="arrow-left"
+          onClick={() => setPages(pages - 1)}
+        />
+        <img
+          src={arrowRight}
+          alt="arrow-right"
+          className="arrow-right"
+          onClick={() => setPages(pages + 1)}
+        />
+      </div>
     </>
   );
 };
