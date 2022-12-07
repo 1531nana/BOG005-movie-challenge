@@ -1,0 +1,20 @@
+.movies{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 5em;
+}
+
+.mainCard---Poster{
+    width: 90%;
+    min-width: 100px;
+    max-width: 300px;
+    height: 90%;
+    min-height: 200px ;
+    max-height: 400px;
+    border-radius: 10px;
+}
+ 
+
+.detailsBacKCard{
+    color: white;
+}

@@ -3,6 +3,7 @@ import { getAllMovies } from "../../lib/request";
 import { Card } from "../Card/Card";
 import { Description } from "../../types";
 import arrowRight from "../../resources/arrow-right.png";
+import arrowLeft from "../../resources/arrow-left.png";
 
 export const Home = () => {
   interface HomeState {
@@ -42,11 +43,18 @@ export const Home = () => {
         <Card movies={movies} />
       </div>
       <img
+        src={arrowLeft}
+        alt="arrow-left"
+        className="arrow-left"
+        onClick={() => setPages(pages - 1)}
+      />
+      <img
         src={arrowRight}
-        alt=""
-        style={{ background: "black" }}
+        alt="arrow-right"
+        className="arrow-right"
         onClick={() => setPages(pages + 1)}
       />
+      
     </>
   );
 };

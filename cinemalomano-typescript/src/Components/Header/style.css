@@ -59,9 +59,11 @@
 
 @media (min-width: 1024px) {
 
-    .mb-3{
+    nav.mb-3.navbar.navbar-expand-sm.navbar-light{
+        margin-bottom: 0rem !important;
         background: #708C87;
     }
+   
 
     .logo{
         width: 10%;
@@ -74,7 +76,7 @@
         display: flex;
         justify-content: flex-start !important;
         gap: 3em;
-        margin-left: 11em;
+        margin-left: 5em;
     }
 
     .d-flex{
@@ -85,12 +87,18 @@
         background-color: transparent !important;
         border: 1px solid white !important;
         border-radius: 2em !important;
+        margin-top: 5px;
     }
     .search{
         display: flex;
         position: absolute;
         right: 12%;
-        padding-top: 4px;
+        padding-top: 10px;
+    }
+
+    .navbar-expand-sm .navbar-nav {
+        font-size: 20px;
+        color: white;
     }
 
   

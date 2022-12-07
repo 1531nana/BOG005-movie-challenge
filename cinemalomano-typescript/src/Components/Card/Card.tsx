@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { getOneMovie } from "../../lib/request";
 import { Description} from '../../types'
+import './style.css'
 
 interface Props {
   movies: Array<Description>;
@@ -30,17 +31,17 @@ export const Card = ({ movies }: Props) => {
               <div className="movie-title">
                 <p>{movie.Title}</p>
               </div>
-              <img src={movie.Poster} alt="" />
+              <img src={movie.Poster} alt="" className="mainCard---Poster"/>
               {!movieDetail
                 ? ""
                 : movieDetail.map((res) => {
                     if (res.imdbID === movie.imdbID) return( 
-                    <Fragment  key={res.imdbID}>
+                    <div  key={res.imdbID} className='detailsBacKCard'>
                         <p>{res.Title}</p>
                         <p>{res.Plot}</p>
                         <p>{res.Genre}</p>
 
-                    </Fragment>
+                    </div>
                     );
                   })}
             </section>
