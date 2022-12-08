@@ -62,10 +62,7 @@ export const Header: React.FC<stateInputSearch> = ({handleInput, search, pages, 
                   />
                   <img src={search} alt="" className="search"/>
                 </Form> */}
-                <div>
-
-                {/* <Search search={search} handleInput={handleInput} pages={pages} request={request}/> */}
-                </div>
+                <Search search={search} handleInput={handleInput} pages={pages} request={request}/>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">Home</Nav.Link>
                   <NavDropdown

@@ -27,7 +27,7 @@ export const HomePage = () => {
 
   return (
     <div className="homePage">
-      <Header handleInput={handleInput} search={search} pages={pages} request={getAllMovies} />
+      <Header search={search} pages={pages} request={getAllMovies} handleInput={handleInput}/>
       <div className="homePage--container">
       <h1 className="homePage--titleHome">LATEST RELEASES</h1>
       {/* <Home /> */}
