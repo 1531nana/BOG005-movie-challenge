@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import searchImg from "../../resources/search.png";
 
-interface stateInputSearch {
+interface InputSearch {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
   pages: number;
@@ -13,7 +13,7 @@ export const Search = ({
   search,
   pages,
   request,
-}: stateInputSearch) => {
+}: InputSearch) => {
   return(
     <>
     {

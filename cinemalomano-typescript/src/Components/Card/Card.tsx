@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getOneMovie } from "../../lib/request";
+import { makeRequestGetMovieId } from "../../lib/request";
 import { Description} from '../../types'
 import './style.css'
 
@@ -25,7 +25,7 @@ export const Card = ({ movies }: Props) => {
               key={movie.imdbID}
               className="movie"
               onClick={() =>
-                getOneMovie(movie.imdbID).then((res) => setMovieDetail(res))
+                makeRequestGetMovieId(movie.imdbID).then((res) => setMovieDetail(res))
               }
             >
               <div className="movie-title">

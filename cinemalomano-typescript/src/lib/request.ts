@@ -10,17 +10,12 @@ const apiKey = 'b08101fa'
 
 //obtener por título o ID y acceder a todas las propiedades ( t 'o' i)
 //obtener por año 
-export const getAllMovies = (title: string, page: number) => {
-   return makeRequestGetMoviesWithYear(title, page).then(mapFromApiToMovies)
-}
 
-export const getOneMovie = (id: number) => {
-    return makeRequestGetMovieId(id).then(mapFromApiToMovies)
-}
-
- const makeRequestGetMoviesWithYear = async (title: string, page: number):  Promise<Description[]> => {
+ export const makeRequestGetMoviesWithYear = async (title: string, page: number):  Promise<Description[]> => {
     const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&type=movie&y=${new Date().getFullYear()}&page=${page}`
     const response = await axios.get(urlRequest)
+    if(response.data.Search === undefined) return []
+    
     return response.data.Search
 }
 
@@ -29,43 +24,6 @@ export const makeRequestGetMovieId = async (id: number) => {
     const urlRequest = `${baseURL}?apikey=${apiKey}&i=${id}`
     const response = await axios.get(urlRequest)
     console.log('detaiils ',response.data);
+    if(response.data === undefined) return []
     return [response.data]
 }
-
-
-const mapFromApiToMovies = (apiResponse: Description[] ): Array<Description> => {
-
-    if(apiResponse === undefined){ console.log('no hubo coinicdencias');
-     return []}
-    console.log('apiResponse ',apiResponse);
-    
-    return apiResponse.map(moviesFromApi => {
-        const {
-            Title,
-            Plot,
-            Year,
-            Director,
-            Genre,
-            Actors,
-            Awards,
-            Type,
-            imdbID,
-            Poster
-        } = moviesFromApi
-        // console.log('moviesApiRequest ',moviesFromApi);
-        
-        return{
-            Title,
-            Plot,
-            Year,
-            Director,
-            Genre,
-            Actors,
-            Awards,
-            Type,
-            imdbID,
-            Poster
-        }
-    })
-}
-

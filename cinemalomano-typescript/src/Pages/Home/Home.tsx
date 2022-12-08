@@ -1,13 +1,11 @@
 import { Header } from "../../Components/Header/Header";
 import { Home } from "../../Components/Home/Home";
 import { Description } from "../../types";
-import './style.css'
-import {useState, useEffect} from 'react'
-import { getAllMovies } from "../../lib/request";
-
+import "./style.css";
+import { useState, useEffect } from "react";
+import { makeRequestGetMoviesWithYear } from "../../lib/request";
 
 export const HomePage = () => {
-
   interface HomeState {
     search: string;
     movies: Array<Description>;
@@ -23,16 +21,20 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    getAllMovies(search, pages).then(setMovies);
+    makeRequestGetMoviesWithYear(search, pages).then(setMovies);
   }, [search, pages]);
-
 
   return (
     <div className="homePage">
-      <Header search={search} pages={pages} request={getAllMovies} handleInput={handleInput}/>
+      <Header
+        search={search}
+        pages={pages}
+        request={makeRequestGetMoviesWithYear}
+        handleInput={handleInput}
+      />
       <div className="homePage--container">
-      <h1 className="homePage--titleHome">LATEST RELEASES</h1>
-      <Home movies={movies} pages={pages} setPages={setPages} />
+        <h1 className="homePage--titleHome">LATEST RELEASES</h1>
+        <Home movies={movies} pages={pages} setPages={setPages} />
       </div>
     </div>
   );

@@ -8,19 +8,20 @@ import logo from "../../resources/logo.png";
 import "./style.css";
 import { Search } from "../Search/Search";
 
-interface stateInputSearch {
+interface InputSearch {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
   pages: number;
   request: (search: string, pages: number) => {};
 }
 
-export const Header: React.FC<stateInputSearch> = ({
+export const Header = ({
   handleInput,
   search,
   pages,
   request,
-}: stateInputSearch) => {
+}: InputSearch) => {
+  
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
@@ -45,15 +46,6 @@ export const Header: React.FC<stateInputSearch> = ({
             >
               <Offcanvas.Body>
                 <img src={logo} alt="" className="logo" />
-                {/* <Form className="d-flex">
-                  <Form.Control
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <img src={search} alt="" className="search"/>
-                </Form> */}
                 <Search
                   search={search}
                   handleInput={handleInput}
