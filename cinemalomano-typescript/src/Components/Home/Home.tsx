@@ -8,30 +8,31 @@ import { Form } from "react-bootstrap";
 import searchImg from '../../resources/search.png'
 
 
-export const Home = () => {
+interface HomeState {
+  setPages: React.Dispatch<React.SetStateAction<number>>;
+  movies: Array<Description>;
+  pages: number;
+}
+
+export const Home = ({movies, setPages, pages} : HomeState) => {
   
-  interface HomeState {
-    search: string;
-    movies: Array<Description>;
-    pages: number;
-  }
 
-  const [search, setSearch] = useState<HomeState["search"]>("");
-  const [movies, setMovies] = useState<HomeState["movies"]>([]);
-  const [pages, setPages] = useState<HomeState["pages"]>(1);
+  // const [search, setSearch] = useState<HomeState["search"]>("");
+  // const [movies, setMovies] = useState<HomeState["movies"]>([]);
+  // const [pages, setPages] = useState<HomeState["pages"]>(1);
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
-  };
+  // const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearch(e.target.value);
+  // };
 
-  useEffect(() => {
-    getAllMovies(search, pages).then(setMovies);
-  }, [search, pages]);
+  // useEffect(() => {
+  //   getAllMovies(search, pages).then(setMovies);
+  // }, [search, pages]);
 
   return (
     <>
-      <div>
-        <Form className="d-flex">
+      {/* <div> */}
+        {/* <Form className="d-flex">
           <Form.Control
             type="search"
             placeholder="Search"
@@ -43,7 +44,7 @@ export const Home = () => {
           <img src={searchImg} alt="" className="search"  onClick={() => {
             getAllMovies(search, pages);
           }} />
-        </Form>
+        </Form> */}
         {/* <input
           type="text"
           placeholder="Search"
@@ -57,7 +58,7 @@ export const Home = () => {
         >
           View data
         </button> */}
-      </div>
+      {/* </div> */}
       <div>
         <Card movies={movies} />
         <img

@@ -1,26 +1,26 @@
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { useEffect, useState } from "react";
-import logo from '../../resources/logo.png'
-// import search from '../../resources/search.png'
-import './style.css'
-import { Home } from "../Home/Home";
+import logo from "../../resources/logo.png";
+import "./style.css";
 import { Search } from "../Search/Search";
 
 interface stateInputSearch {
-  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void,
-   search: string,
-   pages: number,
-  request: (search: string, pages: number) => {}
+  handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  search: string;
+  pages: number;
+  request: (search: string, pages: number) => {};
 }
 
-export const Header: React.FC<stateInputSearch> = ({handleInput, search, pages, request}: stateInputSearch) => {
-
-
+export const Header: React.FC<stateInputSearch> = ({
+  handleInput,
+  search,
+  pages,
+  request,
+}: stateInputSearch) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
@@ -35,16 +35,8 @@ export const Header: React.FC<stateInputSearch> = ({handleInput, search, pages, 
   return (
     <>
       {[width < 1024 ? false : "sm"].map((expand, i) => (
-        <Navbar
-          key={i}
-          collapseOnSelect
-        //   bg="light"
-          expand={expand}
-          className="mb-3"
-        >
+        <Navbar key={i} collapseOnSelect expand={expand} className="mb-3">
           <Container fluid>
-            {/* <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand> */}
-
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
@@ -62,7 +54,12 @@ export const Header: React.FC<stateInputSearch> = ({handleInput, search, pages, 
                   />
                   <img src={search} alt="" className="search"/>
                 </Form> */}
-                <Search search={search} handleInput={handleInput} pages={pages} request={request}/>
+                <Search
+                  search={search}
+                  handleInput={handleInput}
+                  pages={pages}
+                  request={request}
+                />
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Nav.Link href="#action1">Home</Nav.Link>
                   <NavDropdown

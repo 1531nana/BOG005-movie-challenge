@@ -4,6 +4,8 @@ import { Description } from "../../types";
 import './style.css'
 import {useState, useEffect} from 'react'
 import { getAllMovies } from "../../lib/request";
+
+
 export const HomePage = () => {
 
   interface HomeState {
@@ -30,7 +32,7 @@ export const HomePage = () => {
       <Header search={search} pages={pages} request={getAllMovies} handleInput={handleInput}/>
       <div className="homePage--container">
       <h1 className="homePage--titleHome">LATEST RELEASES</h1>
-      {/* <Home /> */}
+      <Home movies={movies} pages={pages} setPages={setPages} />
       </div>
     </div>
   );
