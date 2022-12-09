@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeRequestGetMovieId } from "../../lib/request";
-import { Description} from '../../types'
-import './style.css'
+import { Description } from "../../types";
+import "./style.css";
 
 interface Props {
   movies: Array<Description>;
@@ -16,35 +16,57 @@ export const Card = ({ movies }: Props) => {
     movieDetailState["movieDetail"]
   >([]);
 
+  useEffect(() => {
+    if (movies) {
+      movies.map((movie) =>
+        makeRequestGetMovieId(movie.imdbID).then((res) =>{
+         res.map(movieD => movieD.imdbID === movie.imdbID && setMovieDetail(res))
+          })
+      );
+    }
+  }, [movies]);
+
   return (
-    <main className="main-card">
+    <main className="card">
       {movies ? (
-        <div className="movies">
-          {movies.map((movie) => (
-            <section
-              key={movie.imdbID}
-              className="movie"
-              onClick={() =>
-                makeRequestGetMovieId(movie.imdbID).then((res) => setMovieDetail(res))
-              }
-            >
-              <div className="movie-title">
-                <p>{movie.Title}</p>
-              </div>
-              <img src={movie.Poster} alt="" className="mainCard---Poster"/>
-              {!movieDetail
-                ? ""
-                : movieDetail.map((res) => {
-                    if (res.imdbID === movie.imdbID) return( 
-                    <div  key={res.imdbID} className='detailsBacKCard'>
+        <div className="card--movies">
+          {movies.map((movie, i) => (
+            <div className="card--movie" key={i}>
+              <>
+                <section
+                  key={movie.imdbID}
+                  className="card--movie_face --front "
+                  onClick={() =>
+                    makeRequestGetMovieId(movie.imdbID).then((res) => {
+                      setMovieDetail(res);
+                    })
+                  }
+                >
+                 <img
+                      src={movie.Poster}
+                      alt={movie.Title}
+                      className="card--movie_poster"
+                    />
+                </section>
+              </>
+              <>
+              {/* <CardBack movies={movies} /> */}
+                {movieDetail.map(
+                  (res) =>
+                    res.imdbID === movie.imdbID && (
+                      <section
+                        className="card--movie_face --back "
+                        style={{'display': 'block'}}
+                        key={res.imdbID}
+                      >
                         <p>{res.Title}</p>
                         <p>{res.Plot}</p>
                         <p>{res.Genre}</p>
-
-                    </div>
-                    );
-                  })}
-            </section>
+                      </section>
+                    )
+                )}
+              </>
+            </div>
           ))}
         </div>
       ) : null}

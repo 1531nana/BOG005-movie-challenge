@@ -21,7 +21,7 @@ export const Home = ({movies, setPages, pages} : HomeState) => {
           className="arrow-left"
           onClick={() => setPages(pages - 1)}
         />
-        <img
+        <img    
           src={arrowRight}
           alt="arrow-right"
           className="arrow-right"

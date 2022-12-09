@@ -3,7 +3,7 @@ import { Home } from "../../Components/Home/Home";
 import { Description } from "../../types";
 import "./style.css";
 import { useState, useEffect } from "react";
-import { makeRequestGetMoviesWithYear } from "../../lib/request";
+import { makeRequestGetDataOfLastestReleases } from "../../lib/request";
 
 export const HomePage = () => {
   interface HomeState {
@@ -12,7 +12,7 @@ export const HomePage = () => {
     pages: number;
   }
 
-  const [search, setSearch] = useState<HomeState["search"]>("");
+  const [search, setSearch] = useState<HomeState["search"]>("love");
   const [movies, setMovies] = useState<HomeState["movies"]>([]);
   const [pages, setPages] = useState<HomeState["pages"]>(1);
 
@@ -21,7 +21,7 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    makeRequestGetMoviesWithYear(search, pages).then(setMovies);
+    makeRequestGetDataOfLastestReleases(search).then(setMovies);
   }, [search, pages]);
 
   return (
@@ -29,7 +29,7 @@ export const HomePage = () => {
       <Header
         search={search}
         pages={pages}
-        request={makeRequestGetMoviesWithYear}
+        request={makeRequestGetDataOfLastestReleases}
         handleInput={handleInput}
       />
       <div className="homePage--container">

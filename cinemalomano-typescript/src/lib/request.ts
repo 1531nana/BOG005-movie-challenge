@@ -11,19 +11,27 @@ const apiKey = 'b08101fa'
 //obtener por título o ID y acceder a todas las propiedades ( t 'o' i)
 //obtener por año 
 
- export const makeRequestGetMoviesWithYear = async (title: string, page: number):  Promise<Description[]> => {
-    const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&type=movie&y=${new Date().getFullYear()}&page=${page}`
+ export const makeRequestGetDataOfLastestReleases = async (title: string):  Promise<Description[]> => {
+    const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&y=${new Date().getFullYear()}&page=1`
     const response = await axios.get(urlRequest)
     if(response.data.Search === undefined) return []
-    
+    console.log('All movies ',response.data.Search);
     return response.data.Search
 }
+
+// export const makeRequestGetDataOfLastestReleases = async (title: string, page: number):  Promise<Description[]> => {
+//     const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&y=${new Date().getFullYear()}&page=${page}`
+//     const response = await axios.get(urlRequest)
+//     if(response.data.Search === undefined) return []
+//     return response.data.Search
+// }
 
 export const makeRequestGetMovieId = async (id: number) => {
     
     const urlRequest = `${baseURL}?apikey=${apiKey}&i=${id}`
     const response = await axios.get(urlRequest)
     console.log('detaiils ',response.data);
-    if(response.data === undefined) return []
+    if(response.data === undefined) {console.log('soy undefined request')
+    return []}
     return [response.data]
 }
