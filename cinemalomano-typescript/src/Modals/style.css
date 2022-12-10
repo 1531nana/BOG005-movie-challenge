@@ -1,0 +1,38 @@
+/* // .modal{
+//     width: 100%;
+//     min-height: 100vh;
+//     position: fixed;
+//     z-index: 1500;
+//     top: 0;
+//     left: 0;
+//     background-color: rgba(0, 0, 0, .75);
+//     display: none;
+//     justify-content: center;
+//     align-items: center;
+
+//     &.is-open{
+//     display: flex;
+//     }
+
+//     &-container{
+//         position: relative;
+//         padding: 1rem;
+//         min-width: 320px;
+//         max-width: 480px;
+//         min-height: 200px;
+//         max-height: 600px;
+//         overflow-y: auto;
+//         background: #fff;
+//         @include center-perfect;
+//     }
+
+//     &-close{
+//         width: 20px;
+//         height: 20px;
+
+//         position: absolute;
+//         top: 5%;
+//         right: 5%;
+//     }
+
+// } */

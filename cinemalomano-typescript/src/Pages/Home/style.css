@@ -1,0 +1,16 @@
+.homePage--container{
+    background: #285459;
+    padding: 20px;
+    height: 100%;
+    max-height: 350vh;
+    min-height: 100vh;
+}
+
+.homePage--titleHome{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    text-shadow: 1px 5px #0000006e;
+    margin-bottom: 1em;
+}
