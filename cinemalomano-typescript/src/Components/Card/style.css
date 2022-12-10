@@ -38,7 +38,7 @@ main.card {
   transition: 0.5s;
 }
 .--front {
-  box-shadow: 0 5px 10px cyan;
+  box-shadow: 0 5px 10px rgb(56, 55, 92);
 }
 .card--movie_poster {
   width: 100%;
@@ -59,11 +59,27 @@ main.card {
   flex-direction: column;
   justify-content: space-between;
   text-align: center;
-  box-shadow: 0 5px 10px cyan;
-
+  box-shadow: 0 5px 10px rgb(56, 55, 92);
+    /* animation-duration: 2s; */
   /* animation: 2s back 0.5s ease-in-out; */
 }
 
+.year{
+    width: 4em;
+    height: 1.5em;
+    display: flex;
+    bottom: 3%;
+    right: 3%;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+    background: #141619c2;
+}
+
+.year p {
+    color: white;
+    margin: 0;
+}
 /* @keyframes back {
     0%{
         transform: translateY(-200px);

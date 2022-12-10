@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import logo from "../../resources/logo.png";
 import "./style.css";
 import { Search } from "../Search/Search";
+import { Link } from "react-router-dom";
 
 interface InputSearch {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -21,7 +22,6 @@ export const Header = ({
   pages,
   request,
 }: InputSearch) => {
-  
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
@@ -53,40 +53,58 @@ export const Header = ({
                   request={request}
                 />
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Nav.Link href="#action1">Home</Nav.Link>
+                  <Link to="/home">
+                    <Nav.Link href="#action1">Home</Nav.Link>
+                  </Link>
                   <NavDropdown
                     title="Series"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action2">
-                      All series
-                    </NavDropdown.Item>
+                    <Link to="/all-series">
+                      <NavDropdown.Item href="#action2">
+                        All series
+                      </NavDropdown.Item>
+                    </Link>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action3">
-                      Older releases
-                    </NavDropdown.Item>
+                    <Link to="/older-releases">
+                      <NavDropdown.Item href="#action3">
+                        Older releases
+                      </NavDropdown.Item>
+                    </Link>
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action4">
-                      Top five ratings
-                    </NavDropdown.Item>
+                    <Link to="/top-five-ratings-series">
+                      <NavDropdown.Item href="#action4">
+                        Top five ratings
+                      </NavDropdown.Item>
+                    </Link>
                   </NavDropdown>
                   <NavDropdown
                     title="Movies"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <NavDropdown.Item href="#action2">
-                      All movies
-                    </NavDropdown.Item>
+                    <Link to="/all-movies">
+                      <NavDropdown.Item href="#action2">
+                        All movies
+                      </NavDropdown.Item>
+                    </Link>
+
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action3">
-                      Top five ratings
-                    </NavDropdown.Item>
+                    <Link to="/top-five-ratings-movies">
+                      <NavDropdown.Item href="#action3">
+                        Top five ratings
+                      </NavDropdown.Item>
+                    </Link>
+
                     <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action4">
-                      Top five awards
-                    </NavDropdown.Item>
+                    <Link to="/top-five-awards-movies">
+                      <NavDropdown.Item href="#action4">
+                        Top five awards
+                      </NavDropdown.Item>
+                    </Link>
                   </NavDropdown>
-                  <Nav.Link href="#action5">Random surprise</Nav.Link>
+                  <Link to="/random-surprise">
+                    <Nav.Link href="#action5">Random surprise</Nav.Link>
+                  </Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

@@ -38,7 +38,7 @@ export const Card = ({ movies }: Props) => {
                   className="card--movie_face --front "
                   onClick={() =>
                     makeRequestGetMovieId(movie.imdbID).then((res) => {
-                      setMovieDetail(res);
+                      setMovieDetail(res)
                     })
                   }
                 >
@@ -47,6 +47,9 @@ export const Card = ({ movies }: Props) => {
                       alt={movie.Title}
                       className="card--movie_poster"
                     />
+                  <div className="card--movie_face year">
+                    <p>{movie.Year}</p>
+                  </div>
                 </section>
               </>
               <>
@@ -54,15 +57,17 @@ export const Card = ({ movies }: Props) => {
                 {movieDetail.map(
                   (res) =>
                     res.imdbID === movie.imdbID && (
-                      <section
-                        className="card--movie_face --back "
-                        style={{'display': 'block'}}
-                        key={res.imdbID}
-                      >
-                        <p>{res.Title}</p>
-                        <p>{res.Plot}</p>
-                        <p>{res.Genre}</p>
-                      </section>
+                          <section
+                          className="card--movie_face --back "
+                          style={{'display': 'grid'
+                          //  "animation": "2s back 0.5s ease-in-out"
+                          }}
+                          key={res.imdbID}
+                        >
+                          <p>{res.Title}</p>
+                          <p>{res.Plot}</p>
+                          <p>{res.Genre}</p>
+                        </section>
                     )
                 )}
               </>
