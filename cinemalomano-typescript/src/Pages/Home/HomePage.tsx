@@ -21,7 +21,7 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    makeRequestGetDataOfLastestReleases(search).then(setMovies);
+    makeRequestGetDataOfLastestReleases(search, pages).then(setMovies);
   }, [search, pages]);
 
   return (

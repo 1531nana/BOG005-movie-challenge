@@ -51,18 +51,23 @@ main.card {
 }
 
 .--back {
-  background: rgb(31 33 34 / 87%);
+  background: rgb(31 33 34 / 90%);
   width: 30%;
   height: 30%;
   color: white;
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  text-align: center;
   box-shadow: 0 5px 10px rgb(56, 55, 92);
-    /* animation-duration: 2s; */
-  /* animation: 2s back 0.5s ease-in-out; */
+    align-content: space-around;
+    text-align: start;
+    padding: 15px;
+    letter-spacing: 1px;
 }
+
+/* .--back_title{
+  font-weight: 500;
+} */
 
 .year{
     width: 4em;
