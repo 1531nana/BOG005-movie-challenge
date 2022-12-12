@@ -9,6 +9,8 @@ import { AllMovies } from "./Components/Movies/AllMovies/AllMovies";
 import { TopFiveAwards } from "./Components/Movies/TopFiveAwards/TopFiveAwards";
 import { TopFiveRatings } from "./Components/Movies/TopFiveRatings/TopFiveRatings";
 import { Surprise } from "./Components/Surprise/Surprise";
+import { AwardsMovies } from "./Pages/AwardsMovies/AwardsMovies";
+import { SurprisePages } from "./Pages/Surprise/SurprisePages";
 
 function App() {
   return (
@@ -22,8 +24,8 @@ function App() {
           <Route path="/top-five-ratings-series" element={<TopFiveRatingsSeries />} /> 
           <Route path="/all-movies" element={<AllMovies />} />
           <Route path="/top-five-ratings-movies" element={<TopFiveRatings />} /> 
-          <Route path="/top-five-awards-movies" element={<TopFiveAwards />} /> 
-          <Route path="/random-surprise" element={<Surprise />} /> 
+          <Route path="/top-five-awards-movies" element={<AwardsMovies />} /> 
+          <Route path="/random-surprise" element={<SurprisePages />} /> 
         </Routes>
       </BrowserRouter>
     </div>

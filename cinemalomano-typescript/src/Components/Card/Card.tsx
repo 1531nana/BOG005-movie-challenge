@@ -19,11 +19,13 @@ export const Card = ({ movies }: Props) => {
   useEffect(() => {
     if (movies) {
       movies.map((movie) =>
-        makeRequestGetMovieId(movie.imdbID).then((res) => {
-          res.map(
-            (movieD) => movieD.imdbID === movie.imdbID && setMovieDetail(res)
-          );
-        })
+        makeRequestGetMovieId(movie.imdbID).then((res) => res
+        // {
+        //   res.map(
+        //     (movieD) => movieD.imdbID === movie.imdbID && setMovieDetail(res)
+        //   );
+        // }
+        )
       );
     }
   }, [movies]);
