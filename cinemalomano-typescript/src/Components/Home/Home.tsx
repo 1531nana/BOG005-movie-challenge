@@ -10,30 +10,26 @@ interface HomeState {
   pages: number;
 }
 
-export const Home = ({movies, setPages, pages} : HomeState) => {
-  
+export const Home = ({ movies, setPages, pages }: HomeState) => {
   return (
-      <div>
-        <Card movies={movies} />
-        {
-          (movies.length > 0) &&  
-          <>
-      
-            <img
+    <div>
+      <Card movies={movies} />
+      {movies.length > 0 && (
+        <>
+          <img
             src={arrowLeft}
             alt="arrow-left"
             className="arrow-left"
             onClick={() => setPages(pages - 1)}
           />
-          <img    
+          <img
             src={arrowRight}
             alt="arrow-right"
             className="arrow-right"
             onClick={() => setPages(pages + 1)}
           />
-          </>
-        }
-       
-      </div>
+        </>
+      )}
+    </div>
   );
 };

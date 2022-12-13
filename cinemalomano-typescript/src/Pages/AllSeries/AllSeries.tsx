@@ -11,13 +11,8 @@ export const AllSeries = () => {
         pages: number;
       }
     
-      const [search, setSearch] = useState<HomeState["search"]>("");
       const [movies, setMovies] = useState<HomeState["movies"]>([]);
       const [pages, setPages] = useState<HomeState["pages"]>(1);
-    
-      const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value);
-      };
     
       useEffect(() => {
         makeRequestGetDataOfSeries(pages, 'women', 'series').then(setMovies);

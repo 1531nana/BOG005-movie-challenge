@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react";
-import { Home } from "../../Components/Home/Home";
 import { Search } from "../../Components/Search/Search";
 import { makeRequestGetDataOfLastestReleases } from "../../lib/request";
 import { Description } from "../../types";
-
 
 export const SearchPage = () => {
 
