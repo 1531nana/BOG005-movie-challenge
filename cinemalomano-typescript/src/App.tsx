@@ -2,13 +2,16 @@ import React from "react";
 import "./App.css";
 import { HomePage } from "./Pages/Home/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { AllSeries } from "./Components/Series/AllSeries/AllSeries";
+// import { AllSeries } from "./Components/Series/AllSeries/AllSeries";
 import { OlderReleases } from "./Components/Series/OlderReleases/OlderReleases";
 import { TopFiveRatingsSeries } from "./Components/Series/TopFiveRatings/TopFiveRatings";
-import { AllMovies } from "./Components/Movies/AllMovies/AllMovies";
-import { TopFiveAwards } from "./Components/Movies/TopFiveAwards/TopFiveAwards";
+// import { AllMovies } from "./Components/Movies/AllMovies/AllMovies";
 import { TopFiveRatings } from "./Components/Movies/TopFiveRatings/TopFiveRatings";
-import { Surprise } from "./Components/Surprise/Surprise";
+import { AwardsMovies } from "./Pages/AwardsMovies/AwardsMovies";
+import { SurprisePages } from "./Pages/Surprise/SurprisePages";
+import { FilmDescriptionPage } from "./Pages/FilmDescription/FilmDescriptionPage";
+import { AllSeries } from "./Pages/AllSeries/AllSeries";
+import AllMovies from "./Pages/AllMovies/AllMovies";
 
 function App() {
   return (
@@ -18,12 +21,13 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/all-series" element={<AllSeries />} />
-          <Route path="/older-releases" element={<OlderReleases/>} /> 
-          <Route path="/top-five-ratings-series" element={<TopFiveRatingsSeries />} /> 
+          <Route path="/older-releases" element={<OlderReleases/>} />
+          <Route path="/top-five-ratings-series" element={<TopFiveRatingsSeries />} />
           <Route path="/all-movies" element={<AllMovies />} />
-          <Route path="/top-five-ratings-movies" element={<TopFiveRatings />} /> 
-          <Route path="/top-five-awards-movies" element={<TopFiveAwards />} /> 
-          <Route path="/random-surprise" element={<Surprise />} /> 
+          <Route path="/top-five-ratings-movies" element={<TopFiveRatings />} />
+          <Route path="/top-five-awards-movies" element={<AwardsMovies />} />
+          <Route path="/random-surprise" element={<SurprisePages />} />
+          <Route path="/film" element={<FilmDescriptionPage />} />
         </Routes>
       </BrowserRouter>
     </div>

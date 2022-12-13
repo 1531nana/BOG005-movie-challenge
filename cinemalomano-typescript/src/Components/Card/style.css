@@ -51,21 +51,36 @@ main.card {
 }
 
 .--back {
-  background: rgb(31 33 34 / 87%);
+  background: rgb(31 33 34 / 90%);
   width: 30%;
   height: 30%;
   color: white;
   display: none;
   flex-direction: column;
   justify-content: space-between;
-  text-align: center;
   box-shadow: 0 5px 10px rgb(56, 55, 92);
-    /* animation-duration: 2s; */
-  /* animation: 2s back 0.5s ease-in-out; */
+    align-content: space-around;
+    text-align: start;
+    padding: 15px;
+    letter-spacing: 1px;
+    /* animation:  2s back 0.5s ease-in-out ; */
 }
 
+/* @keyframes back {
+  0%{
+      transform: translateY(-200px);
+  }
+  100%{
+      transform: translateY(0px);
+  }
+} */
+
+/* .--back_title{
+  font-weight: 500;
+} */
+
 .year{
-    width: 4em;
+    /* width: 4em; */
     height: 1.5em;
     display: flex;
     bottom: 3%;
@@ -80,11 +95,4 @@ main.card {
     color: white;
     margin: 0;
 }
-/* @keyframes back {
-    0%{
-        transform: translateY(-200px);
-    }
-    100%{
-        transform: translateY(0px);
-    }
-} */
+
