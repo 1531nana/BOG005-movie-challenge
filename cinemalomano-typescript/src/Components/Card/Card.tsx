@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { makeRequestGetMovieId } from "../../lib/request";
 import { Description } from "../../types";
+import { FilmDescription } from "../FilmDescription/FilmDescription";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   movies: Array<Description>;
 }
 
 export const Card = ({ movies }: Props) => {
+
   interface movieDetailState {
     movieDetail: Array<Description>;
   }
@@ -19,16 +22,16 @@ export const Card = ({ movies }: Props) => {
   useEffect(() => {
     if (movies) {
       movies.map((movie) =>
-        makeRequestGetMovieId(movie.imdbID).then((res) => res
-        // {
-        //   res.map(
-        //     (movieD) => movieD.imdbID === movie.imdbID && setMovieDetail(res)
-        //   );
-        // }
-        )
+        makeRequestGetMovieId(movie.imdbID).then((res) => res)
       );
     }
   }, [movies]);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate('/film')
+  };
 
   return (
     <main className="card">
@@ -64,6 +67,13 @@ export const Card = ({ movies }: Props) => {
                         className="card--movie_face --back "
                         style={{ display: "grid" }}
                         key={res.imdbID}
+                        onClick={() => {
+                          <FilmDescription movies={movies} />
+                          return(
+                            handleClick
+                          )
+
+                        }}
                       >
                         <p style={{ fontWeight: "500" }}>
                           {res.Title.toUpperCase()}

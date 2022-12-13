@@ -30,7 +30,8 @@ export const Search = ({
           src={searchImg}
           alt=""
           className="search"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault()
             request(search, pages)
           }}
         />

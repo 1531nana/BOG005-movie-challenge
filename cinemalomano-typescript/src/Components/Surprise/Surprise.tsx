@@ -13,6 +13,7 @@ export const Surprise = () => {
   }
 
   const [movies, setMovie] = useState<Films["movies"]>([]);
+  
   const surpriseTitle = ["war", "love", "dead", "scream", "animals"];
   const surpriseType = ["movie", "series"];
   const randomTitle =

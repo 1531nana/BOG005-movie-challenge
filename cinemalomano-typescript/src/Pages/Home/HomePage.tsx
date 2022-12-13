@@ -24,6 +24,7 @@ export const HomePage = () => {
     makeRequestGetDataOfLastestReleases(search, pages).then(setMovies);
   }, [search, pages]);
 
+
   return (
     <div className="homePage">
       <Header
@@ -33,7 +34,12 @@ export const HomePage = () => {
         handleInput={handleInput}
       />
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">LATEST RELEASES</h1>
+          {/* {
+          location.pathname !== '/home' || '/' ? <h1 style={{'display': 'none'}} className="homePage--titleHome">LATEST RELEASES</h1>
+        }
+        : */}
+         <h1  className="homePage--titleHome">LATEST RELEASES</h1>
+        
         <Home movies={movies} pages={pages} setPages={setPages} />
       </div>
     </div>
