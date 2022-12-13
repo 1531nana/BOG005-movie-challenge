@@ -10,8 +10,6 @@ interface Acum {
 }
 
 export const AwardsMovies = () => {
-  // export const AwardsMovies = ({children}: Acum) => {
-
   interface Results {
     Search: Array<Description>;
     pages: number;
@@ -44,9 +42,13 @@ export const AwardsMovies = () => {
           });
           if (movie.Awards.includes(sortedArray[0])) {
             // setFilm(movie);
-            return(<h1 style={{'zIndex': '1500'}} className="movieMap">{movie.Title}</h1>)
+            return (
+              <h1 style={{ zIndex: "1500" }} className="movieMap">
+                {movie.Title}
+              </h1>
+            );
           }
-        })
+        });
         //  return
       })
     );
