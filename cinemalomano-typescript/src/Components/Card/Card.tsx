@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { makeRequestGetMovieId } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 
 interface Props {
   movies: Array<Description>;
@@ -19,6 +19,9 @@ export const Card = ({ movies }: Props) => {
     movieDetailState["movieDetail"]
   >([]);
 
+ const location = useLocation()
+console.log(location);
+
   useEffect(() => {
     if (movies) {
       movies.map((movie) =>
@@ -30,7 +33,7 @@ export const Card = ({ movies }: Props) => {
   return (
     <main className="card">
       {movies ? (
-        <div className="card--movies">
+        <div className={(location.pathname === 'random-surprise') ? "card--movies_random" : 'card--movies'}>
           {movies.map((movie, i) => (
             <div className="card--movie" key={i}>
               <>
@@ -57,18 +60,28 @@ export const Card = ({ movies }: Props) => {
                 {movieDetail.map(
                   (res) =>
                     res.imdbID === movie.imdbID && (
-                      <section
-                        className="card--movie_face --back "
-                        style={{ display: "grid" }}
-                      >
-                        <p style={{ fontWeight: "500" }}>
-                          <Link to={`/home/${res.imdbID}`}>
+                      // <>
+                      // {
+                          <Link to={`/home/${res.imdbID}`} className='card--movie-link'>
+                          <section
+                            className="card--movie_face--back "
+                            style={{ display: "grid" }}
+                          >
+                            <p style={{ fontWeight: "500" }}>
                             {res.Title.toUpperCase()}
-                          </Link>
-                        </p>
-                        <p>{res.Plot}</p>
-                        <p>{res.Genre}</p>
-                      </section>
+                              {/* <Link to={`/home/${res.imdbID}`}>
+                                {res.Title.toUpperCase()}
+                              </Link> */}
+                            </p>
+                            <p>{res.Plot}</p>
+                            <p>{res.Genre}</p>
+                          </section>
+
+                        </Link>
+                         
+                      // }
+                      // </>
+                    
                     )
                 )}
               </>

@@ -10,7 +10,7 @@
 }
 
 .form-control{
-    color: white !important;
+    color: #8da0bc !important;
     letter-spacing: 1pt;
 }
 
@@ -41,7 +41,7 @@
     .form-control  {
         width: 70% !important;
         background-color: transparent !important;
-        border: 1px solid white !important;
+        border: 1px solid #8da0bc !important;
         border-radius: 2em !important;
     }
 
@@ -70,7 +70,8 @@
 
     nav.mb-3.navbar.navbar-expand-sm.navbar-light{
         margin-bottom: 0rem !important;
-        background: #708C87;
+        background: #080f28;
+        /* background: #708C87; */
     }
    
 
@@ -94,7 +95,7 @@
     }  
     .form-control  {
         background-color: transparent !important;
-        border: 1px solid white !important;
+        border: 1px solid #8da0bc !important;
         border-radius: 2em !important;
         margin-top: 5px;
     }
@@ -107,7 +108,15 @@
 
     .navbar-expand-sm .navbar-nav {
         font-size: 20px;
-        color: white;
+        color: #8da0bc;
+    }
+
+    .navbar-expand-sm .navbar-nav .nav-link{
+        color: #8da0bc;
+    }
+
+    .offcanvas-end a{
+        text-decoration: none;
     }
 
   

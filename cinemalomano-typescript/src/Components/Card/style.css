@@ -1,25 +1,20 @@
 main.card {
-  background: #285459;
+  background: #080f28;
   border: none;
 }
 
 .card--movies {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  margin-top: 5em;
-  /* display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 20px; */
-}
-
-.card--movies {
+  margin-top: 3em;
+  grid-gap: 50px;
   position: relative;
   width: 100%;
   height: 101em;
-  margin: 20px;
-  flex-wrap: wrap;
+}
+
+.card--movies_random{
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .card--movie {
@@ -36,6 +31,7 @@ main.card {
   border-radius: 10px;
   overflow: hidden;
   transition: 0.5s;
+
 }
 .--front {
   box-shadow: 0 5px 10px rgb(56, 55, 92);
@@ -50,37 +46,21 @@ main.card {
   object-fit: cover;
 }
 
-.--back {
-  background: rgb(31 33 34 / 90%);
-  width: 30%;
-  height: 30%;
-  color: white;
-  display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 5px 10px rgb(56, 55, 92);
+.card--movie_face--back {
+    background: rgb(31 33 34 / 95%);
+    color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 5px 10px rgb(56 55 92);
     align-content: space-around;
     text-align: start;
     padding: 15px;
     letter-spacing: 1px;
-    /* animation:  2s back 0.5s ease-in-out ; */
-}
-
-/* @keyframes back {
-  0%{
-      transform: translateY(-200px);
+    position: relative;
   }
-  100%{
-      transform: translateY(0px);
-  }
-} */
-
-/* .--back_title{
-  font-weight: 500;
-} */
 
 .year{
-    /* width: 4em; */
     height: 1.5em;
     display: flex;
     bottom: 3%;
@@ -94,5 +74,13 @@ main.card {
 .year p {
     color: white;
     margin: 0;
+}
+
+.card--movie-link{
+    width: 100%;
+    height: 75%;
+    display: flex;
+    border-radius: 10px;
+    text-decoration-line: none;
 }
 

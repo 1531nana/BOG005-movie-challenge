@@ -6,7 +6,8 @@
     align-items: center;
     width: 90%;
     flex-direction: column;
-    color: white;
+    color: #8da0bc;
     text-shadow: 1px 5px #0000006e;
     gap: 5em;
+    margin-top: 5em;
 }
