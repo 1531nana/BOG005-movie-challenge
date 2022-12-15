@@ -3,6 +3,7 @@ import { Card } from "../Card/Card";
 import { Description } from "../../types";
 import arrowRight from "../../resources/arrow-right.png";
 import arrowLeft from "../../resources/arrow-left.png";
+import './style.css'
 
 interface HomeState {
   setPages: React.Dispatch<React.SetStateAction<number>>;
@@ -12,10 +13,10 @@ interface HomeState {
 
 export const Home = ({ movies, setPages, pages }: HomeState) => {
   return (
-    <div>
+    <div className="home--container">
       <Card movies={movies} />
       {movies.length > 0 && (
-        <>
+        <section className="arrows--container">
           <img
             src={arrowLeft}
             alt="arrow-left"
@@ -28,7 +29,7 @@ export const Home = ({ movies, setPages, pages }: HomeState) => {
             className="arrow-right"
             onClick={() => setPages(pages + 1)}
           />
-        </>
+        </section>
       )}
     </div>
   );

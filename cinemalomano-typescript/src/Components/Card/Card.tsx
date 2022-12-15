@@ -20,7 +20,6 @@ export const Card = ({ movies }: Props) => {
   >([]);
 
  const location = useLocation()
-console.log(location);
 
   useEffect(() => {
     if (movies) {
@@ -36,55 +35,56 @@ console.log(location);
         <div className={(location.pathname === 'random-surprise') ? "card--movies_random" : 'card--movies'}>
           {movies.map((movie, i) => (
             <div className="card--movie" key={i}>
-              <>
-                <section
-                  key={movie.imdbID}
-                  className="card--movie_face --front "
-                  onClick={() =>
-                    makeRequestGetMovieId(movie.imdbID).then((res) => {
-                      setMovieDetail(res);
-                    })
-                  }
-                >
-                  <img
-                    src={movie.Poster}
-                    alt={movie.Title}
-                    className="card--movie_poster"
-                  />
-                  <div className="card--movie_face year">
-                    <p>{movie.Year}</p>
-                  </div>
-                </section>
-              </>
-              <>
-                {movieDetail.map(
-                  (res) =>
-                    res.imdbID === movie.imdbID && (
-                      // <>
-                      // {
-                          <Link to={`/home/${res.imdbID}`} className='card--movie-link'>
-                          <section
-                            className="card--movie_face--back "
-                            style={{ display: "grid" }}
-                          >
-                            <p style={{ fontWeight: "500" }}>
-                            {res.Title.toUpperCase()}
-                              {/* <Link to={`/home/${res.imdbID}`}>
-                                {res.Title.toUpperCase()}
-                              </Link> */}
-                            </p>
-                            <p>{res.Plot}</p>
-                            <p>{res.Genre}</p>
-                          </section>
+              <section className="card--movie--container">
 
-                        </Link>
-                         
-                      // }
-                      // </>
-                    
-                    )
-                )}
-              </>
+                  <>
+                    <section
+                      key={movie.imdbID}
+                      className="card--movie_face --front "
+                      onClick={() =>
+                        makeRequestGetMovieId(movie.imdbID).then((res) => {
+                          setMovieDetail(res);
+                        })
+                      }
+                    >
+                      <img
+                        src={movie.Poster}
+                        alt={movie.Title}
+                        className="card--movie_poster"
+                      />
+                      <div className="card--movie_face year">
+                        <p>{movie.Year}</p>
+                      </div>
+                    </section>
+                  </>
+                  <>
+                    {movieDetail.map(
+                      (res) =>
+                        res.imdbID === movie.imdbID && (
+                          // <>
+                          // {
+                              <Link to={`/home/${res.imdbID}`} className='card--movie-link'>
+                              <section
+                                className="card--movie_face --back "
+                                style={{ display: "grid" }}
+                              >
+                                <p style={{ fontWeight: "500" }}>
+                                {res.Title.toUpperCase()}
+                                </p>
+                                <p>{res.Plot}</p>
+                                <p>{res.Genre}</p>
+                              </section>
+
+                            </Link>
+                            
+                          // }
+                          // </>
+                        
+                        )
+                    )}
+                  </>
+
+              </section>
             </div>
           ))}
         </div>

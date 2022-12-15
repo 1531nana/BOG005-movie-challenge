@@ -43,8 +43,8 @@ export const Surprise = () => {
                 })
                 }
             />
-        </article>
         <Card movies={movies} />
+        </article>
     </section>
     </main>
   );

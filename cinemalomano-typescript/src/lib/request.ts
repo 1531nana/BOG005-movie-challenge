@@ -7,6 +7,25 @@ const apiKey = "80cad3d3";
 // const apiKey = 'b08101fa'
 
 // https://www.omdbapi.com/?i=tt3896198&apikey=b08101fa //https://omdbapi.com/?s=love&apikey=80cad3d3
+//https://omdbapi.com/?s=tom&apikey=b08101fa&type=series&y=1940
+// https://omdbapi.com/?s=man&apikey=b08101fa&type=series&y=1951
+// https://omdbapi.com/?s=love&apikey=b08101fa&type=series&y=1951
+
+export const makeRequestGetseriesOfOlderReleases = async () => {
+  const urlRequest = `${baseURL}?apikey=${apiKey}&s=tom&type=series&y=1940`;
+  const response = await axios.get(urlRequest);
+  if (response.data.Search === undefined) return [];
+  console.log("OlderReleases ", response.data.Search);
+  return response.data.Search;
+}
+
+export const makeRequestGetseriesOfLoveOlderReleases = async () => {
+  const urlRequest = `${baseURL}?apikey=${apiKey}&s=love&type=series&y=1951`;
+  const response = await axios.get(urlRequest);
+  if (response.data.Search === undefined) return [];
+  console.log("OlderReleases love ", response.data.Search);
+  return response.data.Search;
+}
 
 export const makeRequestGetDataOfLastestReleases = async (
   title: string,

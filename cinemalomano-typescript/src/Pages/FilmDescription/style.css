@@ -1,55 +1,64 @@
-.card--details{
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.card--details {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.card--poster{
-    width: 100%;
-    height: 0%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
+.card--poster {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-.card--img_poster{
-    display: flex;
-    border-radius: 10px;
-    object-fit: cover;
-    margin: 50px 20px 20px 30px;
+.card--img_poster {
+  display: flex;
+  width: 70%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
-.card--description{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end;
-    width: 50%;
-    padding: 90px;
-    text-align: justify;
-    gap: 20px;
-    height: 100%;
-    color: white;
+.card--description {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  text-align: justify;
+  gap: 20px;
+  height: 100%;
+  color: white;
 }
 
-.card--container_title--year{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    gap: 2px;
+.card--container_title--year {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2px;
 }
 
-.card--container_title{
-    font-weight: bold;
-    font-size: 18px;
+.card--container_title {
+  font-weight: bold;
+  font-size: 24px;
 }
 
-.card--container_year{
-font-weight: 100;
-font-size: 16px;
+.card--container_year {
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.card--container_plot {
+  font-size: 22px;
+}
+
+.card--container_description {
+  font-size: 18px;
+  letter-spacing: 1px;
 }
