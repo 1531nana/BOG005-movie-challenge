@@ -62,3 +62,36 @@
   font-size: 18px;
   letter-spacing: 1px;
 }
+
+@media (max-width: 599px) {
+  .card--details {
+    flex-direction: column;
+  }
+
+  .card--poster {
+    height: 0%;
+    margin-top: 10em;
+  }
+  .card--container_title--year {
+    position: absolute;
+    top: 5%;
+    width: 80%;
+    align-items: end;
+  }
+  .card--container_title {
+    text-align: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card--poster {
+    height: 70%;
+    justify-content: flex-start;
+  }
+  .card--img_poster {
+    width: 50%;
+  }
+  .card--details {
+    margin-top: 5em;
+  }
+}
