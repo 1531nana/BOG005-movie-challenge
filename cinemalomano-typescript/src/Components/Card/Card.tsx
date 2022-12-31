@@ -23,6 +23,8 @@ export const Card = ({ movies }: Props) => {
 
   useEffect(() => {
     if (movies) {
+      console.log('movies card ',movies);
+      
       movies.map((movie) =>
         makeRequestGetMovieId(movie.imdbID).then((res) => res)
       );
@@ -31,7 +33,7 @@ export const Card = ({ movies }: Props) => {
 
   return (
     <main className="card">
-      {movies ? (
+      {!movies ? null : (
         <div className={(location.pathname === 'random-surprise') ? "card--movies_random" : 'card--movies'}>
           {movies.map((movie, i) => (
             <div className="card--movie" key={i}>
@@ -41,6 +43,8 @@ export const Card = ({ movies }: Props) => {
                     <section
                       key={movie.imdbID}
                       className="card--movie_face --front "
+                      data-testid="card--movie_face--front"
+                      role='button'
                       onClick={() =>
                         makeRequestGetMovieId(movie.imdbID).then((res) => {
                           setMovieDetail(res);
@@ -51,6 +55,7 @@ export const Card = ({ movies }: Props) => {
                         src={movie.Poster}
                         alt={movie.Title}
                         className="card--movie_poster"
+                        
                       />
                       <div className="card--movie_face year">
                         <p>{movie.Year}</p>
@@ -59,13 +64,13 @@ export const Card = ({ movies }: Props) => {
                   </>
                   <>
                     {movieDetail.map(
-                      (res) =>
+                      (res, i) =>
                         res.imdbID === movie.imdbID && (
-                          // <>
-                          // {
                               <Link to={`/home/${res.imdbID}`} className='card--movie-link'>
                               <section
                                 className="card--movie_face --back "
+                                data-testid="card--movie_face--back"
+                                key={i}
                                 style={{ display: "grid" }}
                               >
                                 <p style={{ fontWeight: "500" }}>
@@ -88,7 +93,7 @@ export const Card = ({ movies }: Props) => {
             </div>
           ))}
         </div>
-      ) : null}
+      )}
     </main>
   );
 };
