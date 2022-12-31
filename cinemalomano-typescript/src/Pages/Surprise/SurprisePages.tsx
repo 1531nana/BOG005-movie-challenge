@@ -3,7 +3,7 @@ import "./style.css";
 
 export const SurprisePages = () => {
   return (
-    <main>
+    <main className="container">
       <section className="surprise--section">
         <h1>RANDOM SURPRISE</h1>
         <h2>What to see this weekend?</h2>
