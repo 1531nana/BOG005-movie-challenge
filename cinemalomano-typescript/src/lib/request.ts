@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Description } from "../types";
 
 const baseURL = "https://www.omdbapi.com/";
 const apiKey = "80cad3d3";
@@ -9,7 +8,7 @@ const apiKey = "80cad3d3";
 // https://www.omdbapi.com/?i=tt3896198&apikey=b08101fa //https://omdbapi.com/?s=love&apikey=80cad3d3
 //https://omdbapi.com/?s=tom&apikey=b08101fa&type=series&y=1940
 // https://omdbapi.com/?s=man&apikey=b08101fa&type=series&y=1951
-// https://omdbapi.com/?s=love&apikey=b08101fa&type=series&y=1951
+// https://omdbapi.com/?s=war&apikey=b08101fa&type=movie&y=2021&p=1
 
 export const makeRequestGetseriesOfOlderReleases = async () => {
   const urlRequest = `${baseURL}?apikey=${apiKey}&s=tom&type=series&y=1940`;
@@ -17,31 +16,22 @@ export const makeRequestGetseriesOfOlderReleases = async () => {
   if (response.data.Search === undefined) return [];
   console.log("OlderReleases ", response.data.Search);
   return response.data.Search;
-}
-
-export const makeRequestGetseriesOfLoveOlderReleases = async () => {
-  const urlRequest = `${baseURL}?apikey=${apiKey}&s=love&type=series&y=1951`;
-  const response = await axios.get(urlRequest);
-  if (response.data.Search === undefined) return [];
-  console.log("OlderReleases love ", response.data.Search);
-  return response.data.Search;
-}
+};
 
 export const makeRequestGetDataOfLastestReleases = async (
   title: string,
   pages: number
-): Promise<Description[]> => {
+) => {
   const urlRequest = `${baseURL}?apikey=${apiKey}&s=${title}&y=${new Date().getFullYear()}&page=${pages}`;
   const response = await axios.get(urlRequest);
   if (response.data.Search === undefined) return [];
-  console.log("All movies ", response.data.Search);
-  return response.data.Search;
+  console.log("All movies ", response.data);
+  return response.data;
 };
 
 export const makeRequestGetMovieId = async (id: number) => {
   const urlRequest = `${baseURL}?apikey=${apiKey}&i=${id}`;
   const response = await axios.get(urlRequest);
-  console.log("detaiils ", response.data);
   if (response.data === undefined) return [];
   return [response.data];
 };
@@ -55,47 +45,23 @@ export const makeRequestGetMovieIdWhitPlotFull = async (id: string) => {
 };
 
 export const makeRequestGetAmountWarMovies = async (pages: number) => {
-  const urlRequest = `${baseURL}?apikey=${apiKey}&s=war&type=movie&page=${pages}`;
+  const urlRequest = `${baseURL}?apikey=${apiKey}&s=war&type=movie&page=${pages}&y=2021`;
   const response = await axios.get(urlRequest);
   if (response.data.Search === undefined) return [];
   console.log("All movies war ", response.data.Search);
   return response.data.Search;
 };
 
-// const awards = () => {
-// //   let acum = [Array<Description>];
-// //   // let acum = []
-// //   for (let i = 0; i < 18; i++) {
-//     // makeRequestGetAmountWarMovies(i).then((res) => {
-//     //   res.map((movie: Array<Description>) => {
-//     //     makeRequestGetMovieId(movie.imdbID).then((data) =>
-//     //         console.log("data of ID >>>>>>>>", data)
-//     //       )
-//     //     );
-
-//         // movie.map((film) =>
-//         //   makeRequestGetMovieId(film.imdbID).then((data) =>
-//         //     console.log("data of ID >>>>>>>>", data)
-//         //   )
-//         // );
-//     //   });
-//     // });
-// //   }
-//   // return Promise.all([acum]).then(res => res)
-// };
-// awards();
-// .then(res => console.log(res))
-
 export const makeRequestGetDataOfSeries = async (
   pages: number,
   search: string,
   type: string
-): Promise<Description[]> => {
+) => {
   const urlRequest = `${baseURL}?apikey=${apiKey}&s=${search}&page=${pages}&type=${type}`;
   const response = await axios.get(urlRequest);
   if (response.data.Search === undefined) return [];
   console.log("All series ", response.data.Search);
-  return response.data.Search;
+  return response.data;
 };
 
 export const makeRequestGetDataSurprise = async (
