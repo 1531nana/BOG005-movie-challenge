@@ -35,8 +35,8 @@ export const Header = ({
 
   return (
     <>
-      {[width < 1024 ? false : "sm"].map((expand, i) => (
-        <Navbar key={i} collapseOnSelect expand={expand} className="mb-3">
+      {[width < 1024 ? false : "sm" || "xs"].map((expand, i) => (
+        <Navbar key={i} collapseOnSelect expand={expand}>
           <Container fluid>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
@@ -54,7 +54,7 @@ export const Header = ({
                 />
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Link to="/home">
-                    <Nav.Link href="#action1">Home</Nav.Link>
+                    <Nav.Link>Home</Nav.Link>
                   </Link>
                   <NavDropdown
                     title="Series"
