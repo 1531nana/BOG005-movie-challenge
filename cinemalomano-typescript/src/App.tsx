@@ -3,12 +3,12 @@ import { HomePage } from "./Pages/Home/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { TopFiveRatingsSeries } from "./Components/Series/TopFiveRatings/TopFiveRatings";
 import { TopFiveRatings } from "./Components/Movies/TopFiveRatings/TopFiveRatings";
-import { AwardsMovies } from "./Pages/AwardsMovies/AwardsMovies";
 import { SurprisePages } from "./Pages/Surprise/SurprisePages";
 import { FilmDescriptionPage } from "./Pages/FilmDescription/FilmDescriptionPage";
 import { AllSeries } from "./Pages/AllSeries/AllSeries";
 import AllMovies from "./Pages/AllMovies/AllMovies";
 import OlderSeries from "./Pages/OlderSeries/OlderSeries";
+import  AwardsMovies  from "./Pages/AwardsMovies/AwardsMovies";
 
 function App() {
   return (
