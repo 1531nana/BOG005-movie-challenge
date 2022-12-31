@@ -10,6 +10,11 @@
   padding: 20px;
   width: 100%;
   height: 100%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .homePage--titleHome {
@@ -18,5 +23,30 @@
   text-align: center;
   color: #8da0bc;
   text-shadow: 1px 5px #0000006e;
-  margin-top: 1em;
+  margin: 1em 0;
+}
+
+.pagination-lg {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.pagination .page-link {
+  background-color: #4f6b95b8 !important;
+  border-radius: 0.25rem;
+  font-weight: bolder;
+}
+
+.active > .page-link,
+.page-link.active {
+  border-width: 3px;
+}
+
+.homePage--noMatch {
+  display: flex;
+  color: #b6c4d7;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  text-shadow: 1px 5px #0000006e;
 }
