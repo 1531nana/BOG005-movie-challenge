@@ -10,14 +10,20 @@ export const AllSeries = () => {
     search: string;
     movies: Array<Description>;
     pages: number;
+    totalResults: string;
   }
 
   const [movies, setMovies] = useState<HomeState["movies"]>([]);
-  const [pages, setPages] = useState<HomeState["pages"]>(1);
+  const [currentPage, setCurrentPage] = useState<HomeState["pages"]>(1);
+  const [totalResults, setTotalResults] = useState<HomeState["totalResults"]>(); // Total de todas las películas
 
   useEffect(() => {
-    makeRequestGetDataOfSeries(pages, "women", "series").then(setMovies);
-  }, [pages]);
+    makeRequestGetDataOfSeries(currentPage, "women", "series").then((data) => {
+      setMovies(data.Search);
+      setTotalResults(data.totalResults);
+      setCurrentPage(currentPage);
+    });
+  }, [currentPage]);
 
   return (
     <div className="homePage">
@@ -26,7 +32,12 @@ export const AllSeries = () => {
       </Link>
       <div className="homePage--container">
         <h1 className="homePage--titleHome">ALL WOMEN SERIES</h1>
-        <Home movies={movies} pages={pages} setPages={setPages} />
+        <Home
+          movies={movies}
+          totalResults={totalResults}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );
