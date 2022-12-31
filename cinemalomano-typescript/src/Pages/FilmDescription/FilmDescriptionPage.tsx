@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { makeRequestGetMovieIdWhitPlotFull } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
+import home from "../../resources/home-modal.png";
 
 export const FilmDescriptionPage = () => {
   interface HomeState {
@@ -23,6 +24,9 @@ export const FilmDescriptionPage = () => {
 
   return (
     <main className="card">
+      <Link to="/">
+        <img src={home} alt="home" className="home--surprise" />
+      </Link>
       {!movie
         ? []
         : movie.map((res) => {
@@ -42,12 +46,28 @@ export const FilmDescriptionPage = () => {
                     </p>
                     <p className="card--container_year"> ({res.Year})</p>
                   </article>
-                  <p>{res.Plot}</p>
-                  <p>{res.Genre}</p>
-                  <p>{res.Director}</p>
-                  <p>{res.Actors}</p>
-                  <p>{res.Awards}</p>
-                  <p>{res.Type}</p>
+                  <p className="card--container_plot">{res.Plot}</p>
+                  <article className="card--container_description">
+                    <p>
+                      <b>Genre:</b> {res.Genre}
+                    </p>
+                    <p>
+                      {" "}
+                      <b> Director: </b>
+                      {res.Director}
+                    </p>
+                    <p>
+                      {" "}
+                      <b> Actors:</b> {res.Actors}
+                    </p>
+                    <p>
+                      <b>Awards:</b> {res.Awards}
+                    </p>
+                    <p>
+                      <b>Type: </b>
+                      {res.Type}
+                    </p>
+                  </article>
                 </article>
               </section>
             );

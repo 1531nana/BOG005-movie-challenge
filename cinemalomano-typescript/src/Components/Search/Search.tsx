@@ -1,5 +1,5 @@
-import { Form } from "react-bootstrap";
 import searchImg from "../../resources/search.png";
+import './style.css';
 
 interface InputSearch {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,28 +14,30 @@ export const Search = ({
   pages,
   request,
 }: InputSearch) => {
+
   return(
     <>
     {
-      <Form className="d-flex">
-        <Form.Control
-          type="search"
-          placeholder="Search"
-          className="me-2"
-          aria-label="Search"
-          onChange={handleInput}
-          value={search}
-        />
-        <img
-          src={searchImg}
-          alt=""
-          className="search"
-          onClick={(e) => {
-            e.preventDefault()
-            request(search, pages)
-          }}
-        />
-      </Form>
+      <div className="containerInput">
+      
+      <input 
+        type="search"
+        placeholder="Search"
+        className="form-control inputBuscar"
+        aria-label="Search"
+        onChange={handleInput}
+        value={search}
+      />
+      <img
+        src={searchImg}
+        alt=""
+        className="search"
+        onClick={(e) => {
+          e.preventDefault()
+          request(search, pages)
+        }}
+      />
+      </div>
     }
     </>
   )

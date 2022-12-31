@@ -4,73 +4,71 @@ import {
 } from "../../lib/request";
 import { Description } from "../../types";
 import { useState, useEffect } from "react";
-
-interface Acum {
-  acum: [];
-}
+import Film from "../FilmTop/Film";
+import "./style.css";
 
 export const AwardsMovies = () => {
-  interface Results {
-    Search: Array<Description>;
+  interface AwardsMovies {
+    Movies: Array<Description>;
+    Movies1: Array<Array<Description>>;
+    Films: Array<Description>;
+    ids: Array<number>;
     pages: number;
-    acum: Array<Acum>;
-    acumAwards: Array<[string]>;
   }
 
-  const [movies, setMovies] = useState<Results["Search"]>([]);
-  const [pages, setPages] = useState<Results["pages"]>(1);
-  const [film, setFilm] = useState<Results["Search"]>([]);
+  const [movies, setMovies] = useState<AwardsMovies["Movies"]>([]);
+  const [moviesWithDetails, setMoviesWithDetails] =
+    useState<AwardsMovies["Movies1"]>();
+  const [pages, setPages] = useState<AwardsMovies["pages"]>(1);
 
   useEffect(() => {
-    makeRequestGetAmountWarMovies(pages).then((data) => {
-      setMovies(data);
-    });
+    if (pages < 12) {
+      makeRequestGetAmountWarMovies(pages).then((data) => {
+        setMovies([...movies, data]);
+        setPages(pages + 1);
+      });
+    }
   }, [pages]);
 
-  let acum: Array<number> = [];
-  const array = () =>
-    movies.map((movie) =>
-      makeRequestGetMovieId(movie.imdbID).then((res) => {
-        res.map((movie) => {
-          if (movie.Awards.indexOf("wins" || "win") !== -1) {
-            const index = movie.Awards.indexOf("wins" || "win");
-            const cut = parseInt(movie.Awards.substring(index - 3, index));
-            acum.push(cut);
-          }
-          const sortedArray = acum.sort(function (a, b) {
-            return b - a;
-          });
-          if (movie.Awards.includes(sortedArray[0])) {
-            // setFilm(movie);
-            return (
-              <h1 style={{ zIndex: "1500" }} className="movieMap">
-                {movie.Title}
-              </h1>
-            );
-          }
-        });
-        //  return
-      })
+  async function miFuncionAsincrona(id: number) {
+    const awardsMovies = await makeRequestGetMovieId(id).then((data) =>
+      data
+        .filter((movie) => movie.Awards.indexOf("wins") !== -1)
+        .map((award) => award)
     );
+    return awardsMovies;
+  }
+
+  useEffect(() => {
+    if (movies.length === 11) {
+      const results = Promise.all(
+        movies.flat().map(async (dato) => {
+          return await miFuncionAsincrona(dato.imdbID);
+        })
+      );
+      results.then((data) => setMoviesWithDetails(data));
+    }
+  }, [movies]);
+
+  let acum: Description[] = [];
+  if (moviesWithDetails) {
+    moviesWithDetails.flat().map((movie) => {
+      if (movie.valueOf() !== Boolean && acum.length < 5) {
+        acum.push(movie);
+      }
+    });
+  }
 
   return (
     <div className="homePage">
-      {/* <Header
-            search={search}
-            pages={pages}
-            request={makeRequestGetDataOfLastestReleases}
-            handleInput={handleInput}
-          /> */}
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">TOP FIVE WAR MOVIES RATINGS</h1>
-        <button onClick={array}>Awards</button>
-        {
-          film.length === 0 ? "" : film.map((res) => <h1>{res.Title}</h1>)
-          // film.map(res => <h1>{res.Title}</h1>)
-        }
-        {/* <p>{<AwardsMovies acum={array}/>}</p> */}
-        {/* <Home movies={movies} pages={pages} setPages={setPages} /> */}
+        <h1 className="homePage--titleHome">TOP FIVE WAR MOVIES AWARDS</h1>
+        <main className="homePage--moviesAwards">
+          {acum.length < 1 ? null : acum.map((data) => <Film movies={data} />)}
+        </main>
       </div>
     </div>
   );
 };
+
+export default AwardsMovies;
