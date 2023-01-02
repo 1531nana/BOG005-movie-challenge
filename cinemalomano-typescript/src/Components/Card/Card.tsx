@@ -3,6 +3,7 @@ import { makeRequestGetMovieId } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
 import { Link, useLocation, useParams } from "react-router-dom";
+import noImage from '../../resources/no-image.webp'
 
 interface Props {
   movies: Array<Description>;
@@ -57,7 +58,7 @@ export const Card = ({ movies }: Props) => {
                     }
                   >
                     <img
-                      src={movie.Poster}
+                      src={`${movie.Poster === 'N/A' ? noImage : movie.Poster} `}
                       alt={movie.Title}
                       className="card--movie_poster"
                     />
