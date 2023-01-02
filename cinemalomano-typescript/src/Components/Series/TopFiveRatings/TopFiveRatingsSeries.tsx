@@ -1,14 +1,13 @@
-import {
-  makeRequestGetAmountWarMovies,
-  makeRequestGetMovieId,
-} from "../../lib/request";
-import { Description } from "../../types";
+import './style.css'
+import { Description } from '../../../types';
 import { useState, useEffect } from "react";
-import Film from "../FilmTop/Film";
 import "./style.css";
-import { Header } from "../../Components/Header/Header";
+import Film from '../../../Pages/FilmTop/Film';
+import { makeRequestGetAmountWarMovies, makeRequestGetMovieId } from '../../../lib/request';
 
-export const AwardsMovies = () => {
+export const TopFiveRatingsSeries = () => {
+  //Batman series 
+
   interface AwardsMovies {
     Movies: Array<Description>;
     Movies1: Array<Array<Description>>;
@@ -62,7 +61,6 @@ export const AwardsMovies = () => {
 
   return (
     <div className="homePage">
-      <Header />
       <div className="homePage--container">
         <h1 className="homePage--titleHome">TOP FIVE WAR MOVIES AWARDS</h1>
         <main className="homePage--moviesAwards">
@@ -73,4 +71,4 @@ export const AwardsMovies = () => {
   );
 };
 
-export default AwardsMovies;
+export default TopFiveRatingsSeries;

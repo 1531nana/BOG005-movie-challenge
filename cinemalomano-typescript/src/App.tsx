@@ -1,7 +1,7 @@
 import "./App.css";
 import { HomePage } from "./Pages/Home/HomePage";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { TopFiveRatingsSeries } from "./Components/Series/TopFiveRatings/TopFiveRatings";
+import { TopFiveRatingsSeries } from "./Components/Series/TopFiveRatings/TopFiveRatingsSeries";
 import { TopFiveRatings } from "./Components/Movies/TopFiveRatings/TopFiveRatings";
 import { SurprisePages } from "./Pages/Surprise/SurprisePages";
 import { FilmDescriptionPage } from "./Pages/FilmDescription/FilmDescriptionPage";

@@ -5,7 +5,8 @@ interface InputSearch {
   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
   search: string;
   pages: number;
-  request: (search: string, pages: number) => {};
+  request: (search: string, pages: number, year?: number) => {};
+  // request: (search: string, pages: number, type?: 'string') => {};
 }
 
 export const Search = ({
@@ -19,7 +20,6 @@ export const Search = ({
     <>
     {
       <div className="containerInput">
-      
       <input 
         type="search"
         placeholder="Search"

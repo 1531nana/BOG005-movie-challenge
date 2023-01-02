@@ -4,6 +4,7 @@ import { Description } from "../../types";
 import { Card } from "../../Components/Card/Card";
 import { Link } from "react-router-dom";
 import home from "../../resources/home-modal.png";
+import { Header } from "../../Components/Header/Header";
 
 const OlderSeries = () => {
   interface HomeState {
@@ -18,6 +19,7 @@ const OlderSeries = () => {
 
   return (
     <div className="homePage">
+      <Header />
       <Link to="/">
         <img src={home} alt="home" className="home--surprise" />
       </Link>

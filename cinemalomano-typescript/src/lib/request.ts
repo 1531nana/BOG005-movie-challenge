@@ -18,6 +18,19 @@ export const makeRequestGetseriesOfOlderReleases = async () => {
   return response.data.Search;
 };
 
+export const makeRequestSearch = async (
+  search: string,
+  pages: number,
+  type: string | null,
+  year?: number
+) => {
+  const urlRequest = `${baseURL}?apikey=${apiKey}&s=${search}&page=${pages}&y=${year}&type=${type}`;
+  const response = await axios.get(urlRequest);
+  if (response.data.Search === undefined) return [];
+  console.log("Films Search ", response.data.Search);
+  return response.data;
+};
+
 export const makeRequestGetDataOfLastestReleases = async (
   title: string,
   pages: number
