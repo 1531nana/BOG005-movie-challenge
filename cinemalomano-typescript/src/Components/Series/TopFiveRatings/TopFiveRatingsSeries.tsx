@@ -6,7 +6,8 @@ import Film from '../../../Pages/FilmTop/Film';
 import { makeRequestGetMovieId, makeRequestSearch } from '../../../lib/request';
 
 export const TopFiveRatingsSeries = () => {
-  //Batman series 
+  //Batman series }
+  //imdbRating
 
   interface AwardsMovies {
     Movies: Array<Description>;
@@ -22,8 +23,8 @@ export const TopFiveRatingsSeries = () => {
   const [pages, setPages] = useState<AwardsMovies["pages"]>(1);
 
   useEffect(() => {
-    if (pages < 12) {
-      makeRequestSearch('war', pages, 'movie', 2021).then((data) => {
+    if (pages < 6) {
+      makeRequestSearch('batman', pages, 'series').then((data) => {
         setMovies([...movies, data.Search]);
         setPages(pages + 1);
       });
@@ -32,15 +33,16 @@ export const TopFiveRatingsSeries = () => {
 
   async function miFuncionAsincrona(id: number) {
     const awardsMovies = await makeRequestGetMovieId(id).then((data) =>
-      data
-        .filter((movie) => movie.Awards.indexOf("wins") !== -1)
-        .map((award) => award)
+      data.map((award) => award.imdbRating )
     );
-    return awardsMovies;
+
+    const order = awardsMovies.sort(function(a, b){ return b - a})
+    return order;
+    // return awardsMovies;
   }
 
   useEffect(() => {
-    if (movies.length === 11) {
+    if (movies.length === 6) {
       const results = Promise.all(
         movies.flat().map(async (dato) => {
           return await miFuncionAsincrona(dato.imdbID);

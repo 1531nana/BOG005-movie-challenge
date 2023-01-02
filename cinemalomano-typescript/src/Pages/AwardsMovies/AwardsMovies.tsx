@@ -71,10 +71,10 @@ export const AwardsMovies = () => {
             <Spinner
               animation="border"
               variant="light"
-              className="d-flex justify-content-center alig-items-center position-absolute"
+              className="d-flex justify-content-center alig-items-center position-absolute right-0"
             />
           ) : (
-            acum.map((data) => <Film movies={data} />)
+            acum.map((data, i) => <Film movies={data} key={i + 1} />)
           )}
         </main>
       </div>
