@@ -38,7 +38,7 @@ const AllMovies = () => {
         <Search search={search} handleInput={handleInput} />
       </div>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">ALL FREEDOM FILMS</h1>
+      <h1 className="homePage--titleHome">{`ALL ${search.toUpperCase()} MOVIES` }</h1>
         <Home
           movies={movies}
           totalResults={totalResults}

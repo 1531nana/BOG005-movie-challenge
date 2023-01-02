@@ -43,7 +43,7 @@ export const AllSeries = () => {
         <img src={home} alt="home" className="home--surprise" />
       </Link>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">ALL WOMEN SERIES</h1>
+        <h1 className="homePage--titleHome">{`ALL ${search.toUpperCase()} SERIES` }</h1>
         <Home
           movies={movies}
           totalResults={totalResults}
