@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { makeRequestGetMovieId } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
-import home from "../../resources/home-modal.png";
 import { Header } from "../../Components/Header/Header";
 
 export const FilmDescriptionPage = () => {
@@ -27,10 +26,9 @@ export const FilmDescriptionPage = () => {
 
   return (
     <main className="card">
-      <Header />
-      <Link to="/">
-        <img src={home} alt="home" className="home--surprise" />
-      </Link>
+      <section className="homePage-sectionHeader">
+        <Header />
+      </section>
       {!movie
         ? []
         : movie.map((res) => {

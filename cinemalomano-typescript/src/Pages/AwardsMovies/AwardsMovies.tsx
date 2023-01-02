@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Film from "../FilmTop/Film";
 import "./style.css";
 import { Header } from "../../Components/Header/Header";
+import Spinner from "react-bootstrap/Spinner";
 
 export const AwardsMovies = () => {
   interface AwardsMovies {
@@ -58,14 +59,23 @@ export const AwardsMovies = () => {
       }
     });
   }
-
   return (
     <div className="homePage">
-      <Header />
+      <section className="homePage-sectionHeader">
+        <Header />
+      </section>
       <div className="homePage--container">
         <h1 className="homePage--titleHome">TOP FIVE WAR MOVIES AWARDS</h1>
         <main className="homePage--moviesAwards">
-          {acum.length < 1 ? null : acum.map((data) => <Film movies={data} />)}
+          {acum.length < 1 ? (
+            <Spinner
+              animation="border"
+              variant="light"
+              className="d-flex justify-content-center alig-items-center position-absolute"
+            />
+          ) : (
+            acum.map((data) => <Film movies={data} />)
+          )}
         </main>
       </div>
     </div>

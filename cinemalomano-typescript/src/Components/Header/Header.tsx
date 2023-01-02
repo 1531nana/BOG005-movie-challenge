@@ -32,9 +32,11 @@ export const Header = () => {
               placement="end"
             >
               <Offcanvas.Body>
+              <Link to="/">
                 <img src={logo} alt="" className="logo" />
+              </Link>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Link to="/">
+                  <Link to="/home">
                     <NavDropdown.Item href="#action2">Home</NavDropdown.Item>
                   </Link>
                   <NavDropdown
