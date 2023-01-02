@@ -7,10 +7,3 @@
   align-items: center;
   gap: 50px;
 }
-
-.arrows--container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 100px;
-}

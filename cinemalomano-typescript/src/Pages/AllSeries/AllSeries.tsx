@@ -1,4 +1,4 @@
-import { makeRequestGetDataOfLastestReleases, makeRequestGetDataOfSeries, makeRequestSearch } from "../../lib/request";
+import { makeRequestSearch } from "../../lib/request";
 import { useState, useEffect } from "react";
 import { Description } from "../../types";
 import { Home } from "../../Components/Home/Home";
@@ -26,10 +26,7 @@ export const AllSeries = () => {
   };
 
   useEffect(() => {
-
-    makeRequestSearch(search, currentPage, 'series').then((data) => {
-    // makeRequestGetDataOfSeries(currentPage, "women", "series").then((data) => {
-      // makeRequestGetDataOfLastestReleases(search, currentPage ) 
+    makeRequestSearch(search, currentPage, "series").then((data) => {
       setMovies(data.Search);
       setTotalResults(data.totalResults);
       setCurrentPage(currentPage);
@@ -38,17 +35,10 @@ export const AllSeries = () => {
 
   return (
     <div className="homePage">
-      <Header
-        // search={search}
-        // pages={currentPage}
-        // request={makeRequestGetDataOfLastestReleases}
-        // handleInput={handleInput}
-      />
-       <Search 
-      search={search}
-      pages={currentPage}
-      request={makeRequestGetDataOfLastestReleases}
-      handleInput={handleInput}/>
+      <div className="homePage--containerHeader">
+        <Header />
+        <Search search={search} handleInput={handleInput} />
+      </div>
       <Link to="/">
         <img src={home} alt="home" className="home--surprise" />
       </Link>

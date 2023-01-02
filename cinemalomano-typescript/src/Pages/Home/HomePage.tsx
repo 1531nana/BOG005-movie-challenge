@@ -2,7 +2,7 @@ import { Header } from "../../Components/Header/Header";
 import { Home } from "../../Components/Home/Home";
 import { Description } from "../../types";
 import { useState, useEffect } from "react";
-import { makeRequestGetDataOfLastestReleases, makeRequestSearch } from "../../lib/request";
+import { makeRequestSearch } from "../../lib/request";
 import "./style.css";
 import { Search } from "../../Components/Search/Search";
 
@@ -27,28 +27,21 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    makeRequestSearch(search, currentPage, null, new Date().getFullYear()).then((data) => {
-      // makeRequestGetDataOfLastestReleases(search, currentPage).then((data) => {
-      setMovies(data.Search);
-      setTotalResults(data.totalResults);
-      setCurrentPage(currentPage);
-    });
+    makeRequestSearch(search, currentPage, null, new Date().getFullYear()).then(
+      (data) => {
+        setMovies(data.Search);
+        setTotalResults(data.totalResults);
+        setCurrentPage(currentPage);
+      }
+    );
   }, [search, currentPage]);
 
   return (
     <div className="homePage">
-      {/* <Header
-        search={search}
-        pages={currentPage}
-        request={makeRequestGetDataOfLastestReleases}
-        handleInput={handleInput}
-      /> */}
-      <Header/>
-      <Search 
-      search={search}
-      pages={currentPage}
-      request={makeRequestGetDataOfLastestReleases}
-      handleInput={handleInput}/>
+      <div className="homePage--containerHeader">
+        <Header />
+        <Search search={search} handleInput={handleInput} />
+      </div>
       <div className="homePage--container">
         <h1 className="homePage--titleHome">LATEST RELEASES</h1>
         {movies === undefined || movies.length === 0 ? (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { makeRequestGetseriesOfOlderReleases } from "../../lib/request";
+import { makeRequestSearch } from "../../lib/request";
 import { Description } from "../../types";
 import { Card } from "../../Components/Card/Card";
 import { Link } from "react-router-dom";
@@ -14,7 +14,9 @@ const OlderSeries = () => {
   const [series, setseries] = useState<HomeState["series"]>([]);
 
   useEffect(() => {
-    makeRequestGetseriesOfOlderReleases().then(setseries);
+    makeRequestSearch("tom", 1, "series", 1940).then((data) =>
+      setseries(data.Search)
+    );
   }, []);
 
   return (

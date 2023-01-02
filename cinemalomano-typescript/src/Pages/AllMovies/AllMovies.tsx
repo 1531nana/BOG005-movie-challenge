@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { Home } from "../../Components/Home/Home";
-import { makeRequestGetDataOfLastestReleases, makeRequestGetDataOfSeries, makeRequestSearch } from "../../lib/request";
+import { makeRequestSearch } from "../../lib/request";
 import { Description } from "../../types";
-import home from "../../resources/home-modal.png";
-import { Link } from "react-router-dom";
 import { Header } from "../../Components/Header/Header";
 import { Search } from "../../Components/Search/Search";
 
@@ -26,8 +24,7 @@ const AllMovies = () => {
   };
 
   useEffect(() => {
-    // makeRequestGetDataOfSeries(currentPage, "freedom", "movie").then((data) => {
-      makeRequestSearch(search, currentPage, 'movie').then((data) => {
+    makeRequestSearch(search, currentPage, "movie").then((data) => {
       setMovies(data.Search);
       setTotalResults(data.totalResults);
       setCurrentPage(currentPage);
@@ -36,15 +33,10 @@ const AllMovies = () => {
 
   return (
     <div className="homePage">
-      <Link to="/">
-        <img src={home} alt="home" className="home--surprise" />
-      </Link>
-      <Header/>
-      <Search 
-      search={search}
-      pages={currentPage}
-      request={makeRequestGetDataOfLastestReleases}
-      handleInput={handleInput}/>
+      <div className="homePage--containerHeader">
+        <Header />
+        <Search search={search} handleInput={handleInput} />
+      </div>
       <div className="homePage--container">
         <h1 className="homePage--titleHome">ALL FREEDOM FILMS</h1>
         <Home

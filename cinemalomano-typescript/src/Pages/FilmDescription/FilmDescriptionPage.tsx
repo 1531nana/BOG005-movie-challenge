@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { makeRequestGetMovieIdWhitPlotFull } from "../../lib/request";
+import { makeRequestGetMovieId } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
 import home from "../../resources/home-modal.png";
+import { Header } from "../../Components/Header/Header";
 
 export const FilmDescriptionPage = () => {
   interface HomeState {
@@ -18,12 +19,15 @@ export const FilmDescriptionPage = () => {
 
   useEffect(() => {
     if (details) {
-      makeRequestGetMovieIdWhitPlotFull(details).then(setMovie);
+      makeRequestGetMovieId(details, "full").then((data) => {
+        setMovie(data);
+      });
     }
   }, [details]);
 
   return (
     <main className="card">
+      <Header />
       <Link to="/">
         <img src={home} alt="home" className="home--surprise" />
       </Link>

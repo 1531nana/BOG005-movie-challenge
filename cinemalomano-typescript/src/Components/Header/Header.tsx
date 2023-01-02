@@ -6,24 +6,9 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { useEffect, useState } from "react";
 import logo from "../../resources/logo.png";
 import "./style.css";
-import { Search } from "../Search/Search";
 import { Link } from "react-router-dom";
 
-// interface InputSearch {
-//   handleInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   search: string;
-//   pages: number;
-//   request: (search: string, pages: number) => {};
-// }
-
-export const Header = (
-//   {
-//   handleInput,
-//   search,
-//   pages,
-//   request,
-// }: InputSearch
-) => {
+export const Header = () => {
   const [width, setWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
@@ -48,17 +33,9 @@ export const Header = (
             >
               <Offcanvas.Body>
                 <img src={logo} alt="" className="logo" />
-                {/* <Search
-                  search={search}
-                  handleInput={handleInput}
-                  pages={pages}
-                  request={request}
-                /> */}
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <Link to="/">
-                  <NavDropdown.Item href="#action2">
-                    Home
-                    </NavDropdown.Item>
+                    <NavDropdown.Item href="#action2">Home</NavDropdown.Item>
                   </Link>
                   <NavDropdown
                     title="Series"

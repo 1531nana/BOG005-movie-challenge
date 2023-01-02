@@ -1,7 +1,4 @@
-import {
-  makeRequestGetAmountWarMovies,
-  makeRequestGetMovieId,
-} from "../../lib/request";
+import { makeRequestGetMovieId, makeRequestSearch } from "../../lib/request";
 import { Description } from "../../types";
 import { useState, useEffect } from "react";
 import Film from "../FilmTop/Film";
@@ -24,11 +21,12 @@ export const AwardsMovies = () => {
 
   useEffect(() => {
     if (pages < 12) {
-      makeRequestGetAmountWarMovies(pages).then((data) => {
-        setMovies([...movies, data]);
+      makeRequestSearch("war", pages, "movie", 2021).then((data) => {
+        setMovies([...movies, data.Search]);
         setPages(pages + 1);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pages]);
 
   async function miFuncionAsincrona(id: number) {
@@ -53,6 +51,7 @@ export const AwardsMovies = () => {
 
   let acum: Description[] = [];
   if (moviesWithDetails) {
+    // eslint-disable-next-line array-callback-return
     moviesWithDetails.flat().map((movie) => {
       if (movie.valueOf() !== Boolean && acum.length < 5) {
         acum.push(movie);

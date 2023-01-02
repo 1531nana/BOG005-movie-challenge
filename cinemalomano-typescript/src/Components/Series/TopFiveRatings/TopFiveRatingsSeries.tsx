@@ -3,7 +3,7 @@ import { Description } from '../../../types';
 import { useState, useEffect } from "react";
 import "./style.css";
 import Film from '../../../Pages/FilmTop/Film';
-import { makeRequestGetAmountWarMovies, makeRequestGetMovieId } from '../../../lib/request';
+import { makeRequestGetMovieId, makeRequestSearch } from '../../../lib/request';
 
 export const TopFiveRatingsSeries = () => {
   //Batman series 
@@ -23,8 +23,8 @@ export const TopFiveRatingsSeries = () => {
 
   useEffect(() => {
     if (pages < 12) {
-      makeRequestGetAmountWarMovies(pages).then((data) => {
-        setMovies([...movies, data]);
+      makeRequestSearch('war', pages, 'movie', 2021).then((data) => {
+        setMovies([...movies, data.Search]);
         setPages(pages + 1);
       });
     }

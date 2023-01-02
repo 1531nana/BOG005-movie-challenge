@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Pagination from "react-bootstrap/Pagination";
 
 interface PaginationProps {
@@ -24,7 +24,6 @@ const Paginations = ({
   onPrevClick,
   onNextClick,
 }: PaginationProps) => {
-
   const getNumberOfPages = () => {
     if (Number(totalResults) % 10 > 0) {
       const numberOfpages = Number(totalResults) / 10 + 1;
@@ -34,6 +33,17 @@ const Paginations = ({
     const numberOfpages = Number(totalResults) / 10;
     setNumberOfPages(numberOfpages);
   };
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  const handleWindowResize = () => {
+    setWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
   useEffect(() => {
     getNumberOfPages();
@@ -86,10 +96,10 @@ const Paginations = ({
 
   return (
     <>
-    
-      {
-        totalResults === undefined ? '' :
-        <Pagination size="lg">
+      {totalResults === undefined ? (
+        ""
+      ) : (
+        <Pagination size={width < 550 ? "sm" : "lg"}>
           <Pagination.First onClick={() => getInfo(1)} />
           <Pagination.Prev
             onClick={handlePrevClick}
@@ -108,7 +118,7 @@ const Paginations = ({
           )}
           <Pagination.Last onClick={() => getInfo(Number(numberOfPages))} />
         </Pagination>
-      }
+      )}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import "./style.css";
 import { useState } from "react";
-import { makeRequestGetDataSurprise } from "../../lib/request";
+import { makeRequestSearch } from "../../lib/request";
 import { Description } from "../../types";
 import { Card } from "../Card/Card";
 import click from "../../resources/click.png";
@@ -17,12 +17,15 @@ export const Surprise = () => {
 
   const surpriseTitle = ["war", "love", "dead", "scream", "animals"];
   const surpriseType = ["movie", "series"];
+  const surprisePage = [1, 2, 4, 8, 9]
   const randomTitle =
     surpriseTitle[Math.floor(Math.random() * surpriseTitle.length)];
   const randomType =
     surpriseType[Math.floor(Math.random() * surpriseType.length)];
-
-  return (
+    const randomPage =
+    surprisePage[Math.floor(Math.random() * surprisePage.length)];
+  
+    return (
     <main className="surprise--container">
       <Link to="/">
         <img src={home} alt="home" className="home--surprise" />
@@ -34,9 +37,9 @@ export const Surprise = () => {
             className="surprise--click"
             alt=""
             onClick={() =>
-              makeRequestGetDataSurprise(randomTitle, randomType).then(
+              makeRequestSearch(randomTitle, randomPage, randomType).then(
                 (res) => {
-                  setMovie(res);
+                  setMovie([res.Search[0]]);
                 }
               )
             }
