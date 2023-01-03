@@ -3,7 +3,7 @@ import "./style.css";
 import { Description } from "../../types";
 import { useState, useEffect } from "react";
 import "./style.css";
-import Film from '../FilmTopFive/Film'
+import Film from "../FilmTopFive/Film";
 import { makeRequestGetFilmId, makeRequestSearch } from "../../lib/request";
 import Spinner from "react-bootstrap/Spinner";
 import { Header } from "../../Components/Header/Header";
@@ -78,12 +78,12 @@ export const TopFiveRatingsSeries = () => {
               className="d-flex justify-content-center alig-items-center position-absolute"
             />
           ) : (
-            acumTopFiveRating.map((data,i) => <Film key={i - 1} movies={data} />)
+            acumTopFiveRating.map((data, i) => (
+              <Film key={i - 1} movies={data} i={i} />
+            ))
           )}
         </main>
       </div>
     </div>
   );
 };
-
-// export default TopFiveRatingsSeries;

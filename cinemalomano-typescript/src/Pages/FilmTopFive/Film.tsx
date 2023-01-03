@@ -2,14 +2,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { makeRequestGetFilmId } from "../../lib/request";
 import { Description } from "../../types";
-import noImage from '../../resources/no-image.webp'
-
+import noImage from "../../resources/no-image.webp";
+import one from "../../resources/one.png";
+import two from "../../resources/two.png";
+import three from "../../resources/three.png";
+import four from "../../resources/four.png";
+import five from "../../resources/five.png";
+import "./style.css";
 
 interface Props {
   movies: Description;
+  i: number;
 }
 
-const Film = ({ movies }: Props) => {
+const Film = ({ movies, i }: Props) => {
   interface movieDetailState {
     movieDetail: Array<Description>;
   }
@@ -36,14 +42,30 @@ const Film = ({ movies }: Props) => {
                   }
                 >
                   <img
-                    // src={movies.Poster}
-                    src={`${movies.Poster === 'N/A' ? noImage : movies.Poster} `}
+                    src={`${
+                      movies.Poster === "N/A" ? noImage : movies.Poster
+                    } `}
                     alt={movies.Title}
                     className="card--movie_poster"
                   />
                   <div className="card--movie_face year">
                     <p>{movies.Year}</p>
                   </div>
+                  <img
+                    src={`${
+                      i === 0
+                        ? one
+                        : i === 1
+                        ? two
+                        : i === 2
+                        ? three
+                        : i === 3
+                        ? four
+                        : five
+                    } `}
+                    alt={movies.Title}
+                    className="card--film__topFive"
+                  />
                 </section>
               </>
               <>

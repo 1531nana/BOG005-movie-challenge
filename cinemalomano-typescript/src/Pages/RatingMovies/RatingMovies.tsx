@@ -34,7 +34,7 @@ export const TopFiveRatingMovies = () => {
     );
     return ratingMovies;
   }
-  
+
   useEffect(() => {
     if (movies.length === 40) {
       const requestAllMovies = Promise.all(
@@ -77,7 +77,9 @@ export const TopFiveRatingMovies = () => {
               className="d-flex justify-content-center alig-items-center position-absolute"
             />
           ) : (
-            acumTopFiveRating.map((data,i) => <Film key={i - 1} movies={data} />)
+            acumTopFiveRating.map((data, i) => (
+              <Film key={i - 1} movies={data} i={i} />
+            ))
           )}
         </main>
       </div>

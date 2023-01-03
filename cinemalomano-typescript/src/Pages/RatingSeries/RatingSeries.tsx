@@ -6,6 +6,11 @@ import Film from "../FilmTopFive/Film";
 import { makeRequestGetFilmId, makeRequestSearch } from "../../lib/request";
 import Spinner from "react-bootstrap/Spinner";
 import { Header } from "../../Components/Header/Header";
+import one from '../../resources/one.png'
+import two from '../../resources/two.png'
+import three from '../../resources/three.png'
+import four from '../../resources/four.png'
+import five from '../../resources/five.png'
 
 export const TopFiveRatingsSeries = () => {
   interface RatingSeries {
@@ -14,6 +19,7 @@ export const TopFiveRatingsSeries = () => {
     pages: number;
   }
 
+  const imagesTopFive = [one, two, three, four, five]
   const [series, setSeries] = useState<RatingSeries["Series"]>([]);
   const [seriesWithDetails, setSeriesWithDetails] =
     useState<RatingSeries["SeriesOrder"]>();
@@ -77,7 +83,8 @@ export const TopFiveRatingsSeries = () => {
               className="d-flex justify-content-center alig-items-center position-absolute"
             />
           ) : (
-            acumTopFiveRating.map((data,i) => <Film key={i - 1} movies={data} />)
+             acumTopFiveRating.map((data,i) => <Film key={i - 1} movies={data} i={i}/>) 
+            
           )}
         </main>
       </div>

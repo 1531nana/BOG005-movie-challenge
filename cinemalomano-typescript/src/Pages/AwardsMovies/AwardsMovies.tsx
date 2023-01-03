@@ -74,7 +74,7 @@ export const AwardsMovies = () => {
               className="d-flex justify-content-center alig-items-center position-absolute"
             />
           ) : (
-            acum.map((data, i) => <Film movies={data} key={i + 1} />)
+            acum.map((data, i) => <Film movies={data} key={i + 1} i={i}/>)
           )}
         </main>
       </div>
