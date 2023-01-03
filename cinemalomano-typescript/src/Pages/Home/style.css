@@ -5,6 +5,17 @@
   height: 100%;
 }
 
+.homePage--containerHeader {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  flex-direction: row;
+  height: max-content;
+  justify-content: space-between;
+  z-index: 1500;
+  background: rgb(8, 15, 40) !important;
+}
+
 .homePage--container {
   background: #080f28;
   padding: 20px;
@@ -15,6 +26,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 3em;
 }
 
 .homePage--titleHome {
@@ -49,4 +61,11 @@
   align-items: center;
   font-size: 40px;
   text-shadow: 1px 5px #0000006e;
+}
+
+@media ((min-width: 600px) and (max-width: 750px)) {
+  .offcanvas.show:not(.hiding),
+  .offcanvas.showing {
+    width: 60% !important;
+  }
 }

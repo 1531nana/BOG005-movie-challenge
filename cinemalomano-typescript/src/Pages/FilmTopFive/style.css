@@ -1,0 +1,6 @@
+.card--film__topFive{
+    position: absolute;
+    display: flex;
+    bottom: -10px;
+    right: -30px;
+}

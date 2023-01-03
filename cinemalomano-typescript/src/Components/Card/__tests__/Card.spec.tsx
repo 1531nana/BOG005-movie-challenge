@@ -26,7 +26,7 @@ describe("Component Card", () => {
       },
     ]
 
-    act(() => render(<Card movies={movies}
+    act(() => render(<Card films={movies}
       /> , { wrapper: BrowserRouter }));
 
     const cardMovie =  screen.getByRole('img', { name: /Titanic/i })

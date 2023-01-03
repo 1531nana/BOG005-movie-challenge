@@ -1,11 +1,9 @@
 import "./style.css";
 import { useState } from "react";
-import { makeRequestGetDataSurprise } from "../../lib/request";
+import { makeRequestSearch } from "../../lib/request";
 import { Description } from "../../types";
 import { Card } from "../Card/Card";
 import click from "../../resources/click.png";
-import home from "../../resources/home-modal.png";
-import { Link } from "react-router-dom";
 
 export const Surprise = () => {
   interface Films {
@@ -17,16 +15,16 @@ export const Surprise = () => {
 
   const surpriseTitle = ["war", "love", "dead", "scream", "animals"];
   const surpriseType = ["movie", "series"];
+  const surprisePage = [1, 2, 4, 8, 9];
   const randomTitle =
     surpriseTitle[Math.floor(Math.random() * surpriseTitle.length)];
   const randomType =
     surpriseType[Math.floor(Math.random() * surpriseType.length)];
+  const randomPage =
+    surprisePage[Math.floor(Math.random() * surprisePage.length)];
 
   return (
     <main className="surprise--container">
-      <Link to="/">
-        <img src={home} alt="home" className="home--surprise" />
-      </Link>
       <section className="surprise--container_section">
         <article className="surprise--container_box">
           <img
@@ -34,16 +32,16 @@ export const Surprise = () => {
             className="surprise--click"
             alt=""
             onClick={() =>
-              makeRequestGetDataSurprise(randomTitle, randomType).then(
+              makeRequestSearch(randomTitle, randomPage, randomType).then(
                 (res) => {
-                  setMovie(res);
+                  setMovie([res.Search[0]]);
                 }
               )
             }
           />
         </article>
         <section className="surprise--cardMovie">
-          <Card movies={movies} />
+          <Card films={movies} />
         </section>
       </section>
     </main>

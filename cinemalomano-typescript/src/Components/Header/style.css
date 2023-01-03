@@ -7,6 +7,7 @@
   justify-content: center;
   text-align: center;
   margin: auto;
+  cursor: pointer;
 }
 
 .form-control {
@@ -18,13 +19,10 @@
   color: #ffffffa6 !important;
 }
 
-.navbar {
-  background: #080f28;
-}
-
 .navbar-toggler {
   background: #ffffffa8 !important;
 }
+
 .navbar-nav .dropdown-menu {
   background: #2854596b;
 }
@@ -35,13 +33,6 @@
 a {
   text-decoration: none !important;
   color: white !important;
-}
-
-@media (max-width: 390px) {
-  .offcanvas-body {
-    margin: 0 !important;
-    gap: 2em !important;
-  }
 }
 
 @media (max-width: 600px) {
@@ -57,6 +48,7 @@ a {
     width: 60% !important;
   }
 }
+
 @media ((min-width: 751px) and (max-width: 1023px)) {
   .offcanvas.show:not(.hiding),
   .offcanvas.showing {
@@ -67,6 +59,7 @@ a {
     font-size: 22px !important;
   }
 }
+
 @media (max-width: 1023px) {
   .offcanvas-body {
     margin: 8em 0 0 1em;
@@ -101,35 +94,27 @@ a {
   }
 }
 
-@media ((min-width: 1024px) and (max-width: 1099px )) {
-  .navbar-expand-sm .navbar-nav {
-    margin-left: 0.5em !important;
-  }
-}
-@media (min-width: 1100px) {
-  .navbar-expand-sm .navbar-nav {
-    margin-left: 2em !important;
-  }
-}
 
 @media (min-width: 1024px) {
   .logo {
     width: 60px;
     height: 50px;
-    margin-left: 3em;
+    margin-left: 1em;
   }
-
   .navbar-expand-sm .navbar-nav {
     flex-direction: row;
     display: flex;
+    align-items: baseline;
     justify-content: flex-start !important;
     gap: 3em;
+    font-size: 20px;
+    color: #8da0bc;
   }
 
-  .d-flex {
+  /* .d-flex {
     position: absolute;
     right: 1em;
-  }
+  } */
   .form-control {
     background-color: transparent !important;
     border: 1px solid #8da0bc !important;
@@ -139,11 +124,6 @@ a {
   .search {
     display: flex;
     padding-top: 10px;
-  }
-
-  .navbar-expand-sm .navbar-nav {
-    font-size: 20px;
-    color: #8da0bc;
   }
 
   .navbar-expand-sm .navbar-nav .nav-link {
@@ -157,5 +137,20 @@ a {
   .dropdown-item:focus,
   .dropdown-item:hover {
     background: #285459db !important;
+  }
+  .offcanvas-body {
+    gap: 20px;
+  }
+}
+
+@media ((min-width: 1024px) and (max-width: 1099px )) {
+  .navbar-expand-sm .navbar-nav {
+    margin-left: 0.5em !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  .navbar-expand-sm .navbar-nav {
+    margin-left: 2em !important;
   }
 }

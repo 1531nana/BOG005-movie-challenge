@@ -1,0 +1,12 @@
+.homePage-sectionHeader{
+    display: flex;
+    justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+    .homePage-sectionHeader{
+        justify-content: center;
+        box-shadow: 1px 2px #ffffff1f;
+    }
+  }
+  
