@@ -111,10 +111,10 @@ a {
     color: #8da0bc;
   }
 
-  .d-flex {
+  /* .d-flex {
     position: absolute;
     right: 1em;
-  }
+  } */
   .form-control {
     background-color: transparent !important;
     border: 1px solid #8da0bc !important;

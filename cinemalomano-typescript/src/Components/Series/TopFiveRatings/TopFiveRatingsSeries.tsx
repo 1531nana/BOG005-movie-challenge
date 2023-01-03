@@ -1,72 +1,84 @@
-import './style.css'
-import { Description } from '../../../types';
+import "./style.css";
+import { Description } from "../../../types";
 import { useState, useEffect } from "react";
 import "./style.css";
-import Film from '../../../Pages/FilmTop/Film';
-import { makeRequestGetMovieId, makeRequestSearch } from '../../../lib/request';
+import Film from "../../../Pages/FilmTop/Film";
+import { makeRequestGetMovieId, makeRequestSearch } from "../../../lib/request";
+import Spinner from "react-bootstrap/Spinner";
+import { Header } from "../../Header/Header";
 
 export const TopFiveRatingsSeries = () => {
-  //Batman series }
-  //imdbRating
-
-  interface AwardsMovies {
-    Movies: Array<Description>;
-    Movies1: Array<Array<Description>>;
-    Films: Array<Description>;
-    ids: Array<number>;
+  interface RatingSeries {
+    Series: Array<Description>;
+    SeriesOrder: Array<Array<Description>>;
     pages: number;
   }
 
-  const [movies, setMovies] = useState<AwardsMovies["Movies"]>([]);
-  const [moviesWithDetails, setMoviesWithDetails] =
-    useState<AwardsMovies["Movies1"]>();
-  const [pages, setPages] = useState<AwardsMovies["pages"]>(1);
+  const [series, setSeries] = useState<RatingSeries["Series"]>([]);
+  const [seriesWithDetails, setSeriesWithDetails] =
+    useState<RatingSeries["SeriesOrder"]>();
+  const [pages, setPages] = useState<RatingSeries["pages"]>(1);
 
   useEffect(() => {
     if (pages < 6) {
-      makeRequestSearch('batman', pages, 'series').then((data) => {
-        setMovies([...movies, data.Search]);
+      makeRequestSearch("batman", pages, "series").then((data) => {
+        setSeries([...series, data.Search]);
         setPages(pages + 1);
       });
     }
   }, [pages]);
 
-  async function miFuncionAsincrona(id: number) {
-    const awardsMovies = await makeRequestGetMovieId(id).then((data) =>
-      data.map((award) => award.imdbRating )
+  async function requestASeries(id: number) {
+    const ratingSeries = await makeRequestGetMovieId(id).then((request) =>
+      request.map((series) => series)
     );
-
-    const order = awardsMovies.sort(function(a, b){ return b - a})
-    return order;
-    // return awardsMovies;
+    return ratingSeries;
   }
 
   useEffect(() => {
-    if (movies.length === 6) {
-      const results = Promise.all(
-        movies.flat().map(async (dato) => {
-          return await miFuncionAsincrona(dato.imdbID);
+    if (series.length === 5) {
+      const requestAllSeries = Promise.all(
+        series.flat().map(async (aSeries) => {
+          return await requestASeries(aSeries.imdbID);
         })
       );
-      results.then((data) => setMoviesWithDetails(data));
+      requestAllSeries.then((request) => {
+        const sortByRatingAllSeries = request
+          .flat()
+          .sort(function (serieA, serieB) {
+            return serieB.imdbRating - serieA.imdbRating;
+          });
+        setSeriesWithDetails(sortByRatingAllSeries);
+      });
     }
-  }, [movies]);
+  }, [series]);
 
-  let acum: Description[] = [];
-  if (moviesWithDetails) {
-    moviesWithDetails.flat().map((movie) => {
-      if (movie.valueOf() !== Boolean && acum.length < 5) {
-        acum.push(movie);
+  let acumTopFiveRating: Description[] = [];
+  if (seriesWithDetails) {
+    seriesWithDetails.flat().map((aSeries) => {
+      if (acumTopFiveRating.length < 5) {
+        acumTopFiveRating.push(aSeries);
       }
     });
   }
 
   return (
     <div className="homePage">
+      <section className="homePage-sectionHeader">
+        <Header />
+      </section>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">TOP FIVE WAR MOVIES AWARDS</h1>
+        <h1 className="homePage--titleHome">TOP FIVE BATMAN SERIES RATING</h1>
         <main className="homePage--moviesAwards">
-          {acum.length < 1 ? null : acum.map((data) => <Film movies={data} />)}
+          {acumTopFiveRating.length < 1 ? (
+            <Spinner
+              animation="border"
+              variant="light"
+              className="d-flex justify-content-center alig-items-center position-absolute"
+            />
+          ) : (
+            acumTopFiveRating.map((data,i) => <Film key={i - 1} movies={data} />)
+          )}
         </main>
       </div>
     </div>
