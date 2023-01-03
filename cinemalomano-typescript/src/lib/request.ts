@@ -22,7 +22,7 @@ export const makeRequestSearch = async (
   return response.data;
 };
 
-export const makeRequestGetMovieId = async (
+export const makeRequestGetFilmId = async (
   id: string | number,
   plot: string = "short"
 ) => {

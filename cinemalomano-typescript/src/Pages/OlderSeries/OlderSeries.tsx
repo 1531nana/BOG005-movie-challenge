@@ -25,7 +25,7 @@ const OlderSeries = () => {
       </section>
       <div className="homePage--container">
         <h1 className="homePage--titleHome">TOM's OLDER SERIES</h1>
-        <Card movies={series} />
+        <Card films={series} />
       </div>
     </div>
   );

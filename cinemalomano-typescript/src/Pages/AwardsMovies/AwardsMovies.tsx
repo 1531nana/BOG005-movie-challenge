@@ -1,7 +1,7 @@
-import { makeRequestGetMovieId, makeRequestSearch } from "../../lib/request";
+import { makeRequestGetFilmId, makeRequestSearch } from "../../lib/request";
 import { Description } from "../../types";
 import { useState, useEffect } from "react";
-import Film from "../FilmTop/Film";
+import Film from "../FilmTopFive/Film";
 import "./style.css";
 import { Header } from "../../Components/Header/Header";
 import Spinner from "react-bootstrap/Spinner";
@@ -31,7 +31,7 @@ export const AwardsMovies = () => {
   }, [pages]);
 
   async function miFuncionAsincrona(id: number) {
-    const awardsMovies = await makeRequestGetMovieId(id).then((data) =>
+    const awardsMovies = await makeRequestGetFilmId(id).then((data) =>
       data
         .filter((movie) => movie.Awards.indexOf("wins") !== -1)
         .map((award) => award)
@@ -71,7 +71,7 @@ export const AwardsMovies = () => {
             <Spinner
               animation="border"
               variant="light"
-              className="d-flex justify-content-center alig-items-center position-absolute right-0"
+              className="d-flex justify-content-center alig-items-center position-absolute"
             />
           ) : (
             acum.map((data, i) => <Film movies={data} key={i + 1} />)

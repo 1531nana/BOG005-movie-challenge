@@ -45,7 +45,7 @@ export const Home = ({
 
   return (
     <div className="home--container">
-      <Card movies={movies} />
+      <Card films={movies} />
       <Paginations
         totalResults={totalResults}
         currentPage={currentPage}

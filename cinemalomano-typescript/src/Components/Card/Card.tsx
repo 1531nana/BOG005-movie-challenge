@@ -1,40 +1,38 @@
 import React, { useState, useEffect } from "react";
-import { makeRequestGetMovieId } from "../../lib/request";
+import { makeRequestGetFilmId } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
 import { Link, useLocation, useParams } from "react-router-dom";
 import noImage from '../../resources/no-image.webp'
 
 interface Props {
-  movies: Array<Description>;
+  films: Array<Description>;
 }
 
-export const Card = ({ movies }: Props) => {
-  interface movieDetailState {
-    movieDetail: Array<Description>;
+export const Card = ({films }: Props) => {
+  interface filmDetail {
+    filmDetail: Array<Description>;
   }
 
   let { details } = useParams();
 
-  const [movieDetail, setMovieDetail] = useState<
-    movieDetailState["movieDetail"]
+  const [filmDetails, setFilmDetails] = useState<
+    filmDetail["filmDetail"]
   >([]);
 
   const location = useLocation();
 
   useEffect(() => {
-    if (movies) {
-      console.log("movies card ", movies);
-
-      movies.map((movie) =>
-        makeRequestGetMovieId(movie.imdbID).then((res) => res)
+    if (films) {
+      films.map((film) =>
+        makeRequestGetFilmId(film.imdbID).then((res) => res)
       );
     }
-  }, [movies, details]);
+  }, [films, details]);
 
   return (
     <main className="card">
-      {!movies ? null : (
+      {!films ? null : (
         <div
           className={
             location.pathname === "random-surprise"
@@ -42,7 +40,7 @@ export const Card = ({ movies }: Props) => {
               : "card--movies"
           }
         >
-          {movies.map((movie, i) => (
+          {films.map((movie, i) => (
             <div className="card--movie" key={i}>
               <section className="card--movie--container">
                 <>
@@ -52,8 +50,8 @@ export const Card = ({ movies }: Props) => {
                     data-testid="card--movie_face--front"
                     role="button"
                     onClick={() =>
-                      makeRequestGetMovieId(movie.imdbID).then((res) => {
-                        setMovieDetail(res);
+                      makeRequestGetFilmId(movie.imdbID).then((res) => {
+                        setFilmDetails(res);
                       })
                     }
                   >
@@ -68,7 +66,7 @@ export const Card = ({ movies }: Props) => {
                   </section>
                 </>
                 <>
-                  {movieDetail.map(
+                  {filmDetails.map(
                     (res, i) =>
                       res.imdbID === movie.imdbID && (
                         <Link
@@ -78,7 +76,7 @@ export const Card = ({ movies }: Props) => {
                           <section
                             className="card--movie_face --back "
                             data-testid="card--movie_face--back"
-                            key={i}
+                            key={i * 2}
                             style={{ display: "grid" }}
                           >
                             <p style={{ fontWeight: "500" }}>

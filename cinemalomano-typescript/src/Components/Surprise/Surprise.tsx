@@ -41,7 +41,7 @@ export const Surprise = () => {
           />
         </article>
         <section className="surprise--cardMovie">
-          <Card movies={movies} />
+          <Card films={movies} />
         </section>
       </section>
     </main>

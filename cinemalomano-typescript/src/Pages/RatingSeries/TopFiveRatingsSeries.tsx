@@ -1,11 +1,12 @@
+import React from "react";
 import "./style.css";
-import { Description } from "../../../types";
+import { Description } from "../../types";
 import { useState, useEffect } from "react";
 import "./style.css";
-import Film from "../../../Pages/FilmTop/Film";
-import { makeRequestGetMovieId, makeRequestSearch } from "../../../lib/request";
+import Film from '../FilmTopFive/Film'
+import { makeRequestGetFilmId, makeRequestSearch } from "../../lib/request";
 import Spinner from "react-bootstrap/Spinner";
-import { Header } from "../../Header/Header";
+import { Header } from "../../Components/Header/Header";
 
 export const TopFiveRatingsSeries = () => {
   interface RatingSeries {
@@ -29,7 +30,7 @@ export const TopFiveRatingsSeries = () => {
   }, [pages]);
 
   async function requestASeries(id: number) {
-    const ratingSeries = await makeRequestGetMovieId(id).then((request) =>
+    const ratingSeries = await makeRequestGetFilmId(id).then((request) =>
       request.map((series) => series)
     );
     return ratingSeries;
@@ -85,4 +86,4 @@ export const TopFiveRatingsSeries = () => {
   );
 };
 
-export default TopFiveRatingsSeries;
+// export default TopFiveRatingsSeries;

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { makeRequestGetMovieId } from "../../lib/request";
+import { makeRequestGetFilmId } from "../../lib/request";
 import { Description } from "../../types";
+import noImage from '../../resources/no-image.webp'
+
 
 interface Props {
   movies: Description;
@@ -28,13 +30,14 @@ const Film = ({ movies }: Props) => {
                   className="card--movie_face --front "
                   data-testid="card--movie_face--front"
                   onClick={() =>
-                    makeRequestGetMovieId(movies.imdbID).then((res) => {
+                    makeRequestGetFilmId(movies.imdbID).then((res) => {
                       setMovieDetail(res);
                     })
                   }
                 >
                   <img
-                    src={movies.Poster}
+                    // src={movies.Poster}
+                    src={`${movies.Poster === 'N/A' ? noImage : movies.Poster} `}
                     alt={movies.Title}
                     className="card--movie_poster"
                   />

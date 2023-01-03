@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { makeRequestGetMovieId } from "../../lib/request";
+import { makeRequestGetFilmId } from "../../lib/request";
 import { Description } from "../../types";
 import "./style.css";
 import { Header } from "../../Components/Header/Header";
+import noImage from "../../resources/no-image.webp";
 
 export const FilmDescriptionPage = () => {
   interface HomeState {
@@ -18,7 +19,7 @@ export const FilmDescriptionPage = () => {
 
   useEffect(() => {
     if (details) {
-      makeRequestGetMovieId(details, "full").then((data) => {
+      makeRequestGetFilmId(details, "full").then((data) => {
         setMovie(data);
       });
     }
@@ -31,12 +32,12 @@ export const FilmDescriptionPage = () => {
       </section>
       {!movie
         ? []
-        : movie.map((res) => {
+        : movie.map((res, i) => {
             return (
-              <section className="card--details">
+              <section className="card--details" key={i * 5}>
                 <article className="card--poster">
                   <img
-                    src={res.Poster}
+                    src={`${res.Poster === "N/A" ? noImage : res.Poster} `}
                     alt={res.Title}
                     className="card--img_poster"
                   />
