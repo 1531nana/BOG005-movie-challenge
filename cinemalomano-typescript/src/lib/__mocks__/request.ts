@@ -1,6 +1,6 @@
 export const axios = jest.fn();
 
-export const makeRequestGetMovieId = () =>
+export const makeRequestGetFilmId = () =>
   Promise.resolve(() => [
     {
       Title: "Titanic",

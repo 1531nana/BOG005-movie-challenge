@@ -43,13 +43,11 @@ export const Card = ({films }: Props) => {
           {films.map((movie, i) => (
             <div className="card--movie" key={i}>
               <section className="card--movie--container">
-                <>
                   <section
                     key={movie.imdbID}
                     className="card--movie_face --front "
                     data-testid="card--movie_face--front"
-                    role="button"
-                    onClick={() =>
+                    onClick={ () =>
                       makeRequestGetFilmId(movie.imdbID).then((res) => {
                         setFilmDetails(res);
                       })
@@ -64,7 +62,6 @@ export const Card = ({films }: Props) => {
                       <p>{movie.Year}</p>
                     </div>
                   </section>
-                </>
                 <>
                   {filmDetails.map(
                     (res, i) =>

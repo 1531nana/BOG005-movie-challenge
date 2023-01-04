@@ -1,15 +1,12 @@
-/* eslint-disable testing-library/no-debugging-utils */
-/* eslint-disable testing-library/no-unnecessary-act */
-import { fireEvent, render, screen} from "@testing-library/react";
-import { act } from "react-dom/test-utils";
+import { fireEvent, render, screen, waitFor} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import {Card} from '../Card'
 
 jest.mock("../../../lib/request");
 
-describe("Component Card", () => {
+describe("renders the Card component", () => {
 
-  test("Component Card render a poster", async () => {
+  test("Card component renders back face with one click", async () => {
 
     const movies = [
       {
@@ -26,15 +23,18 @@ describe("Component Card", () => {
       },
     ]
 
-    act(() => render(<Card films={movies}
-      /> , { wrapper: BrowserRouter }));
+    render(<Card films={movies}
+      /> , { wrapper: BrowserRouter });
 
-    const cardMovie =  screen.getByRole('img', { name: /Titanic/i })
-    expect(cardMovie).toBeTruthy()
-    
-    await fireEvent.click(cardMovie)
-    //   await waitFor(() => {
-    //     expect(makeRequestGetMovieId).toBeTruthy()
-    // }) 
+      const cardFaceFront = screen.getByTestId("card--movie_face--front")
+
+      expect(screen.queryByTestId("card--movie_face--back")).not.toBeInTheDocument();
+      
+      fireEvent.click(cardFaceFront);
+
+      await waitFor(() => {
+        expect(screen.getByTestId("card--movie_face--back")).toBeInTheDocument();
+      });
+
   });
 });
