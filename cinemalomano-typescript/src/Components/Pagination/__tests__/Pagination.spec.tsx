@@ -1,13 +1,9 @@
-/* eslint-disable testing-library/no-debugging-utils */
 import {
   fireEvent,
   render,
   screen,
-  waitFor,
-  within,
 } from "@testing-library/react";
 import Paginations from "../Pagination";
-import userEvent from "@testing-library/user-event";
 
 describe("Render the Pagination component", () => {
 
@@ -23,8 +19,6 @@ describe("Render the Pagination component", () => {
 
   const pageNumbers = () => numberOfPages;
 
-  const handleNextClick = () => onNextClick()
-  
   const setUp = () =>
     render(
       <Paginations
@@ -45,16 +39,25 @@ describe("Render the Pagination component", () => {
     expect(pageNumbers()).toEqual(2);
   });
 
-  test("Render the button next to the click", async () => {
+  test("Render the button previus", async () => {
     setUp();
     const paginationPrevius = screen.getByTestId("pagination--previus")
-    const paginationNext = screen.getByText(/»/i)
-    const pageEllipses = screen.queryByText('...')
     
     fireEvent.click(paginationPrevius)
 
    expect(paginationPrevius).toBeInTheDocument()
+  });
+
+  test("Render the button next", async () => {
+    setUp();
+    const paginationNext = screen.getByText(/»/i)
+    
    expect(paginationNext).toBeTruthy()
+  });
+
+  test("does not render the button previus", async () => {
+    setUp();
+    const pageEllipses = screen.queryByText('...')
    expect(pageEllipses).not.toBeInTheDocument()
 
   });
