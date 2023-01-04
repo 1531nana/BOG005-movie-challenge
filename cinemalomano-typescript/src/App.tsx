@@ -8,7 +8,6 @@ import { AllSeries } from "./Pages/AllSeries/AllSeries";
 import AllMovies from "./Pages/AllMovies/AllMovies";
 import OlderSeries from "./Pages/OlderSeries/OlderSeries";
 import AwardsMovies from "./Pages/AwardsMovies/AwardsMovies";
-import { TopFiveRatings } from "./Components/Movies/TopFiveRatings/TopFiveRatings";
 import { TopFiveRatingMovies } from "./Pages/RatingMovies/RatingMovies";
 
 function App() {

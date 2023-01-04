@@ -103,6 +103,7 @@ const Paginations = ({
           <Pagination.First onClick={() => getInfo(1)} />
           <Pagination.Prev
             onClick={handlePrevClick}
+            data-testid="pagination--previus"
             disabled={currentPage === pagesArray[0]}
           />
           {pageDecremenEllipses}
@@ -112,11 +113,14 @@ const Paginations = ({
             ""
           ) : (
             <Pagination.Next
+              data-testid="pagination--next"
               onClick={handleNextClick}
               disabled={currentPage === pagesArray[pagesArray.length - 1]}
             />
           )}
-          <Pagination.Last onClick={() => getInfo(Number(numberOfPages))} />
+          <Pagination.Last
+          data-testid="pagination--last"
+          onClick={() => getInfo(Number(numberOfPages))} />
         </Pagination>
       )}
     </>
