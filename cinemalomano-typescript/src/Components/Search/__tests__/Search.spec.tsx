@@ -1,19 +1,26 @@
-/* eslint-disable testing-library/no-debugging-utils */
-import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import { Search } from "../Search"
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { Search } from "../Search";
 
+describe("Render the Search component", () => {
+  const search = "";
+  const handleInput = jest.fn();
 
-describe('Render the Search component', () => {
+  const setUp = () =>
+    render(<Search handleInput={handleInput} search={search} />);
 
-    const handleInput = () => {}
-    let search = ''
+  test("Input Search is rendered correctly", () => {
+    setUp();
+    const placeholderInput = screen.getByPlaceholderText("Search");
+    expect(placeholderInput).toBeDefined();
+  });
 
-    const setUp = () => render(<Search handleInput={handleInput} search={search} />)
+  test("When the input changes value, the handleInput function is called.", async () => {
+    setUp();
+    const inputSearch = screen.getByTestId("input--search");
+    fireEvent.change(inputSearch, { target: { value: "home" } });
 
-    test('Input Search', ()=>{
-       setUp()
-        const placeholderInput = screen.getByPlaceholderText('Search')
-        expect(placeholderInput).toBeDefined()
-    })
-
-}) 
+    await waitFor(() => {
+      expect(handleInput).toBeCalled();
+    });
+  });
+});
