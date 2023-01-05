@@ -1,7 +1,7 @@
 export const axios = jest.fn();
 
 export const makeRequestGetFilmId = () =>
-  Promise.resolve(() => [
+  Promise.resolve([
     {
       Title: "Titanic",
       Plot: "titanic resumary",
