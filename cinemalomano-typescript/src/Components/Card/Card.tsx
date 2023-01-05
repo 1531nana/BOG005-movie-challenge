@@ -69,6 +69,7 @@ export const Card = ({films }: Props) => {
                         <Link
                           to={`/home/${res.imdbID}`}
                           className="card--movie-link"
+                          key={i * 3}
                         >
                           <section
                             className="card--movie_face --back "
