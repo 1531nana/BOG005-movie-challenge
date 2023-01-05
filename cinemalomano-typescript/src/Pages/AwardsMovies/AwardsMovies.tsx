@@ -65,7 +65,9 @@ export const AwardsMovies = () => {
         <Header />
       </section>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">TOP FIVE WAR MOVIES AWARDS</h1>
+        <h1 className="homePage--titleHome"
+        data-testid='title--moviesAwards'
+        >TOP FIVE WAR MOVIES AWARDS</h1>
         <main className="homePage--moviesAwards">
           {acum.length < 1 ? (
             <Spinner
