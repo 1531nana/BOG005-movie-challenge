@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const baseURL = "https://www.omdbapi.com/";
-const apiKey = "80cad3d3";
-// const apiKey = "b08101fa";
+// const apiKey = "80cad3d3";
+const apiKey = "b08101fa";
 
 // https://www.omdbapi.com/?i=tt3896198&apikey=b08101fa //https://omdbapi.com/?s=love&apikey=80cad3d3
 

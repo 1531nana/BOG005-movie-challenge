@@ -36,58 +36,28 @@ export const Header = () => {
                   <img src={logo} alt="" className="logo" />
                 </Link>
                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <Link to="/home">
-                    <NavDropdown.Item href="#action2">Home</NavDropdown.Item>
-                  </Link>
+                  <Link to="/home">Home</Link>
                   <NavDropdown
                     title="Series"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <Link to="/all-series">
-                      <NavDropdown.Item href="#action2">
-                        All series
-                      </NavDropdown.Item>
-                    </Link>
+                    <Link to="/all-series">All series</Link>
                     <NavDropdown.Divider />
-                    <Link to="/older-releases">
-                      <NavDropdown.Item href="#action3">
-                        Older releases
-                      </NavDropdown.Item>
-                    </Link>
+                    <Link to="/older-releases">Older releases</Link>
                     <NavDropdown.Divider />
-                    <Link to="/top-five-ratings-series">
-                      <NavDropdown.Item href="#action4">
-                        Top five ratings
-                      </NavDropdown.Item>
-                    </Link>
+                    <Link to="/top-five-ratings-series">Top five ratings</Link>
                   </NavDropdown>
                   <NavDropdown
                     title="Movies"
                     id={`offcanvasNavbarDropdown-expand-${expand}`}
                   >
-                    <Link to="/all-movies">
-                      <NavDropdown.Item href="#action2">
-                        All movies
-                      </NavDropdown.Item>
-                    </Link>
-
+                    <Link to="/all-movies">All movies</Link>
                     <NavDropdown.Divider />
-                    <Link to="/top-five-ratings-movies">
-                      <NavDropdown.Item href="#action3">
-                        Top five ratings
-                      </NavDropdown.Item>
-                    </Link>
-
+                    <Link to="/top-five-ratings-movies">Top five ratings</Link>
                     <NavDropdown.Divider />
-                    <Link to="/top-five-awards-movies">
-                      <NavDropdown.Item href="#action4">
-                        Top five awards
-                      </NavDropdown.Item>
-                    </Link>
+                    <Link to="/top-five-awards-movies">Top five awards</Link>
                   </NavDropdown>
-                  <Link to="/random-surprise">
-                    <NavDropdown.Item>Random surprise</NavDropdown.Item>
-                  </Link>
+                  <Link to="/random-surprise">Random surprise</Link>
                 </Nav>
               </Offcanvas.Body>
             </Navbar.Offcanvas>

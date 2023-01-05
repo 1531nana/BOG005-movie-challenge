@@ -24,8 +24,13 @@
 }
 
 .navbar-nav .dropdown-menu {
-  background: #2854596b;
+  background: #285459fa;
+  padding-left: 10px;
+
 }
+/* .navbar-expand-sm .navbar-nav .dropdown-menu {
+  padding-left: 10px;
+} */
 .dropdown-item {
   color: white !important;
 }
@@ -147,6 +152,7 @@ a {
   .navbar-expand-sm .navbar-nav {
     margin-left: 0.5em !important;
   }
+
 }
 
 @media (min-width: 1100px) {

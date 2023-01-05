@@ -35,6 +35,8 @@ export const Surprise = () => {
             onClick={() =>
               makeRequestSearch(randomTitle, randomPage, randomType).then(
                 (res) => {
+                  console.log('click');
+                  
                   setMovie([res.Search[0]]);
                 }
               )
