@@ -29,6 +29,7 @@
   display: flex;
   right: 60%;
   top: 65%;
+  cursor: pointer;
 }
 
 .home--surprise {
