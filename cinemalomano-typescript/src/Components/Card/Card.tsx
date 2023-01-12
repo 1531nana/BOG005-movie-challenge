@@ -46,7 +46,7 @@ export const Card = ({films }: Props) => {
                   <section
                     key={movie.imdbID}
                     className="card--movie_face --front "
-                    data-testid="card--movie_face--front"
+                    // data-testid="card--movie_face--front"
                     onClick={ () =>
                       makeRequestGetFilmId(movie.imdbID).then((res) => {
                         setFilmDetails(res);
@@ -59,7 +59,7 @@ export const Card = ({films }: Props) => {
                       className="card--movie_poster"
                     />
                     <div className="card--movie_face year">
-                      <p>{movie.Year}</p>
+                      <p data-testid="card--movie_face--front">{movie.Year}</p>
                     </div>
                   </section>
                 <>
