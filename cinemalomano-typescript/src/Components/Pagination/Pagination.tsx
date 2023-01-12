@@ -61,13 +61,18 @@ const Paginations = ({
   let pageIncrementEllipses = null;
   if (pagesArray.length > maxPageLimit) {
     pageIncrementEllipses = (
-      <Pagination.Ellipsis onClick={() => handleNextClick()} />
+      <Pagination.Ellipsis 
+      data-testid="pagination--Ellipsis"
+      onClick={() => handleNextClick()} />
     );
   }
   let pageDecremenEllipses = null;
   if (minPageLimit >= 1) {
     pageDecremenEllipses = (
-      <Pagination.Ellipsis onClick={() => handlePrevClick()} />
+      <Pagination.Ellipsis 
+      data-testid="pagination--DecremenEllipses"
+      
+      onClick={() => handlePrevClick()} />
     );
   }
 
@@ -82,6 +87,8 @@ const Paginations = ({
     if (page <= maxPageLimit && page > minPageLimit) {
       return (
         <Pagination.Item
+        data-testid="pagination--Item"
+
           key={page}
           onClick={() => getInfo(page)}
           active={currentPage === page}
@@ -100,7 +107,9 @@ const Paginations = ({
         ""
       ) : (
         <Pagination size={width < 550 ? "sm" : "lg"}>
-          <Pagination.First onClick={() => getInfo(1)} />
+          <Pagination.First 
+          data-testid="pagination--first"
+          onClick={() => getInfo(1)} />
           <Pagination.Prev
             onClick={handlePrevClick}
             data-testid="pagination--previus"
