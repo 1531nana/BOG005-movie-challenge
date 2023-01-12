@@ -24,7 +24,9 @@ const OlderSeries = () => {
         <Header />
       </section>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">TOM's OLDER SERIES👵</h1>
+        <h1 className="homePage--titleHome"
+        data-testid='olderSeries--title'
+        >TOM's OLDER SERIES👵</h1>
         <Card films={series} />
       </div>
     </div>
