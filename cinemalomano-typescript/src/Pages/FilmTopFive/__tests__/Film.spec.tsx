@@ -1,4 +1,3 @@
-/* eslint-disable testing-library/no-debugging-utils */
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import Film from "../Film"
@@ -44,7 +43,5 @@ describe('The Film component', () => {
 		await waitFor(() => {
             expect(screen.getByTestId("film-genre").textContent).toEqual('Drama');
 		});
-        screen.debug()
-        
      })
  })

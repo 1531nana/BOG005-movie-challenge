@@ -43,7 +43,9 @@ export const HomePage = () => {
         <Search search={search} handleInput={handleInput} />
       </div>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">LATEST RELEASES</h1>
+        <h1 className="homePage--titleHome"  
+        data-testid='homePage--titleHome'
+        >LATEST RELEASES</h1>
         {movies === undefined || movies.length === 0 ? (
           <p style={{ color: "white" }} className="homePage--noMatch">
             No match with the search
