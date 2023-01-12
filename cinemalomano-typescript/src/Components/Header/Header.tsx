@@ -1,32 +1,69 @@
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { useEffect, useState } from "react";
+import logo from "../../resources/logo.png";
+import "./style.css";
+import { Link } from "react-router-dom";
+
 export const Header = () => {
-    
-}
-// import "./style.scss"
-// import logo from '../../assets/images/logoHeader.png'
-// import menu from '../../assets/images/menu.png'
-// import { Modals } from "../../Modals/Modals"
-// import { useModal } from "../../Modals/useModal"
-// // import { ExitIcon, SideMenu } from "../SideMenu/SideMenu"
-// // import { ModalsMenu } from "../../Modals/ModalMenu/ModalsMenu"
-// // import { useModal } from "../../Modals/useModal"
-// // import { QuantityProducts } from "../Waiter/TakesOrder/QuantityProducts/QuantityProducts"
-// // import { useLocation } from "react-router-dom"
+  const [width, setWidth] = useState(window.innerWidth);
 
-// export const Header = () => {
+  const handleWindowResize = () => {
+    setWidth(window.innerWidth);
+  };
 
-//     // const [isOpen, open, close] = useModal(false);
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, []);
 
-//     return (
-//         <header className="header">
-//             <Modals
-//                 isOpen={isOpen}
-//                 open={open}
-//                 close={close}
-//                 element={<img src={menu} alt="" className="header_menu" />}
-//                 content={<SideMenu />}
-//                 elementClose={< ExitIcon close={close} />}
-//             />
-//             <img src={logo} alt="" className="header_logo" />
-//         </header>
-//     )
-// }
+  return (
+    <>
+      {[width < 1024 ? false : "sm" || "xs"].map((expand, i) => (
+        <Navbar key={i} collapseOnSelect expand={expand}>
+          <Container fluid>
+            <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+            <Navbar.Offcanvas
+              id={`offcanvasNavbar-expand-${expand}`}
+              aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
+              placement="end"
+            >
+              <Offcanvas.Body>
+                <Link to="/">
+                  <img src={logo} alt="" className="logo" />
+                </Link>
+                <Nav className="justify-content-end flex-grow-1 pe-3">
+                  <Link to="/home">Home</Link>
+                  <NavDropdown
+                    title="Series"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <Link to="/all-series">All series</Link>
+                    <NavDropdown.Divider />
+                    <Link to="/older-releases">Older releases</Link>
+                    <NavDropdown.Divider />
+                    <Link to="/top-five-ratings-series">Top five ratings</Link>
+                  </NavDropdown>
+                  <NavDropdown
+                    title="Movies"
+                    id={`offcanvasNavbarDropdown-expand-${expand}`}
+                  >
+                    <Link to="/all-movies">All movies</Link>
+                    <NavDropdown.Divider />
+                    <Link to="/top-five-ratings-movies">Top five ratings</Link>
+                    <NavDropdown.Divider />
+                    <Link to="/top-five-awards-movies">Top five awards</Link>
+                  </NavDropdown>
+                  <Link to="/random-surprise">Random surprise</Link>
+                </Nav>
+              </Offcanvas.Body>
+            </Navbar.Offcanvas>
+          </Container>
+        </Navbar>
+      ))}
+    </>
+  );
+};

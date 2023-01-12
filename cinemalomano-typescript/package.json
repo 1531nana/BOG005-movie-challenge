@@ -2,9 +2,6 @@
   "name": "cinemalomano-typescript",
   "version": "0.1.0",
   "private": true,
-  "jest": {
-    "verbose": true
-  },
   "babel": {
     "presets": [
       [
@@ -30,9 +27,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.0",
+    "bootstrap": "^5.2.3",
     "jest": "^27.5.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.6.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
@@ -41,7 +41,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

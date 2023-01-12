@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  flex-direction: column;
+  margin-right: 0;
+  align-items: center;
+}
+.surprise--section {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  flex-direction: column;
+  color: #8da0bc;
+  text-shadow: 1px 5px #f8f8fa14;
+  gap: 5em;
+  margin-top: 5em;
+}
+
+.surprise--section h2 {
+  text-align: center;
+  color: white;
+}
+
+@media ((min-width: 700px) and (max-width: 900px)) {
+  .surprise--section {
+    margin-top: 10em;
+  }
+}

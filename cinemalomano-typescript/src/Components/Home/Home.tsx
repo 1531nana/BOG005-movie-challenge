@@ -1,43 +1,62 @@
-import React, { useEffect, useState } from "react";
-import { getAllMovies } from "../../lib/request";
+import React, { useState } from "react";
 import { Card } from "../Card/Card";
 import { Description } from "../../types";
+import "./style.css";
+import Paginations from "../Pagination/Pagination";
 
-export const Home = () => {
-    
+interface HomeState {
+  movies: Array<Description>;
+  totalResults: string | undefined;
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+}
+
+export const Home = ({
+  movies,
+  totalResults,
+  currentPage,
+  setCurrentPage,
+}: HomeState) => {
   interface HomeState {
-    search: string;
-    movies: Array<Description>;
+    pagination: number;
   }
 
-  const [search, setSearch] = useState<HomeState["search"]>("");
-  const [movies, setMovies] = useState<HomeState["movies"]>([]);
+  const [maxPageLimit, setMaxPageLimit] = useState(5); //número máximo de páginas que se van a mostrar
+  const [minPageLimit, setMinPageLimit] = useState(0); //número mínimo de páginas para mostrar
+  const [numberOfPages, setNumberOfPages] = useState<HomeState["pagination"]>(); //número de páginas
 
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+  const pageNumberLimit = 5;
+
+  const onPrevClick = () => {
+    if ((currentPage - 1) % pageNumberLimit === 0) {
+      setMaxPageLimit(maxPageLimit - pageNumberLimit);
+      setMinPageLimit(minPageLimit - pageNumberLimit);
+    }
+    setCurrentPage((prev) => prev - 1);
   };
 
-  useEffect(() => {
-    getAllMovies(search).then(setMovies);
-    
-  }, [search]);
+  const onNextClick = () => {
+    if (currentPage + 1 > maxPageLimit) {
+      setMaxPageLimit(maxPageLimit + pageNumberLimit);
+      setMinPageLimit(minPageLimit + pageNumberLimit);
+    }
+    setCurrentPage((prev) => prev + 1);
+  };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search"
-        onChange={handleInput}
-        value={search}
+    <div className="home--container">
+      <Card films={movies} />
+      <Paginations
+        totalResults={totalResults}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        maxPageLimit={maxPageLimit}
+        minPageLimit={minPageLimit}
+        numberOfPages={numberOfPages}
+        setNumberOfPages={setNumberOfPages}
+        onPrevClick={onPrevClick}
+        onNextClick={onNextClick}
       />
-      <button
-        onClick={() => {
-          getAllMovies(search);
-        }}
-      >
-        View data
-      </button>
-      <Card movies={movies} />
     </div>
   );
 };
