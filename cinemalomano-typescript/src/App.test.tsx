@@ -1,10 +1,10 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import App from './App';
 
 jest.mock('./lib/request.ts')
 
-test('renders learn react link', () => {
+
+test('The App component renders its first load in the root index', async () => {
   
   Object.defineProperty(window, 'matchMedia', {
     writable: true,
@@ -21,6 +21,8 @@ test('renders learn react link', () => {
   });
 
   render(<App />);
-    // const btnLogin = screen.getByRole("button", { name: "details" });
-    // expect(btnLogin).toBeInTheDocument();
+
+  await waitFor(() => 
+  expect(window.location.pathname).toEqual('/')
+  )
   });

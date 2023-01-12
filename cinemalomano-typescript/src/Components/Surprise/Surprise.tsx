@@ -31,9 +31,12 @@ export const Surprise = () => {
             src={click}
             className="surprise--click"
             alt=""
+            data-testid="surprise--click"
             onClick={() =>
               makeRequestSearch(randomTitle, randomPage, randomType).then(
                 (res) => {
+                  console.log('click');
+                  
                   setMovie([res.Search[0]]);
                 }
               )

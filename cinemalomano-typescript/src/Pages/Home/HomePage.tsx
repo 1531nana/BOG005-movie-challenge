@@ -16,10 +16,10 @@ export const HomePage = () => {
     currentPage: number;
   }
 
-  const [search, setSearch] = useState<HomeState["search"]>("love"); // Buscador
-  const [movies, setMovies] = useState<HomeState["movies"]>([]); //Movies
-  const [totalResults, setTotalResults] = useState<HomeState["totalResults"]>(); // Total de todas las películas
-  const [currentPage, setCurrentPage] = useState(1); //página actual
+  const [search, setSearch] = useState<HomeState["search"]>("love"); 
+  const [movies, setMovies] = useState<HomeState["movies"]>([]);
+  const [totalResults, setTotalResults] = useState<HomeState["totalResults"]>();
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -27,6 +27,9 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
+    if(search.length === 0){
+      setCurrentPage(1)
+    }
     makeRequestSearch(search, currentPage, null, new Date().getFullYear()).then(
       (data) => {
         setMovies(data.Search);
@@ -36,6 +39,8 @@ export const HomePage = () => {
     );
   }, [search, currentPage]);
 
+ 
+
   return (
     <div className="homePage">
       <div className="homePage--containerHeader">
@@ -43,7 +48,9 @@ export const HomePage = () => {
         <Search search={search} handleInput={handleInput} />
       </div>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">LATEST RELEASES</h1>
+        <h1 className="homePage--titleHome"  
+        data-testid='homePage--titleHome'
+        >LATEST RELEASES</h1>
         {movies === undefined || movies.length === 0 ? (
           <p style={{ color: "white" }} className="homePage--noMatch">
             No match with the search

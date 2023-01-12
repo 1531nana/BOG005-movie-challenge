@@ -43,13 +43,11 @@ export const Card = ({films }: Props) => {
           {films.map((movie, i) => (
             <div className="card--movie" key={i}>
               <section className="card--movie--container">
-                <>
                   <section
                     key={movie.imdbID}
                     className="card--movie_face --front "
-                    data-testid="card--movie_face--front"
-                    role="button"
-                    onClick={() =>
+                    // data-testid="card--movie_face--front"
+                    onClick={ () =>
                       makeRequestGetFilmId(movie.imdbID).then((res) => {
                         setFilmDetails(res);
                       })
@@ -61,10 +59,9 @@ export const Card = ({films }: Props) => {
                       className="card--movie_poster"
                     />
                     <div className="card--movie_face year">
-                      <p>{movie.Year}</p>
+                      <p data-testid="card--movie_face--front">{movie.Year}</p>
                     </div>
                   </section>
-                </>
                 <>
                   {filmDetails.map(
                     (res, i) =>
@@ -72,17 +69,19 @@ export const Card = ({films }: Props) => {
                         <Link
                           to={`/home/${res.imdbID}`}
                           className="card--movie-link"
+                          data-testid="card--movie-link"
+                          key={i * 3}
                         >
                           <section
                             className="card--movie_face --back "
-                            data-testid="card--movie_face--back"
                             key={i * 2}
                             style={{ display: "grid" }}
                           >
                             <p style={{ fontWeight: "500" }}>
                               {res.Title.toUpperCase()}
                             </p>
-                            <p>{res.Plot}</p>
+                            <p data-testid="card--movie_face--back"
+                            >{res.Plot}</p>
                             <p>{res.Genre}</p>
                           </section>
                         </Link>

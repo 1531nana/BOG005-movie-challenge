@@ -34,7 +34,6 @@ const Film = ({ movies, i }: Props) => {
                 <section
                   key={movies.imdbID}
                   className="card--movie_face --front "
-                  data-testid="card--movie_face--front"
                   onClick={() =>
                     makeRequestGetFilmId(movies.imdbID).then((res) => {
                       setMovieDetail(res);
@@ -49,7 +48,9 @@ const Film = ({ movies, i }: Props) => {
                     className="card--movie_poster"
                   />
                   <div className="card--movie_face year">
-                    <p>{movies.Year}</p>
+                    <p
+                    data-testid="card--movie_face--front"
+                    >{movies.Year}</p>
                   </div>
                   <img
                     src={`${
@@ -65,6 +66,7 @@ const Film = ({ movies, i }: Props) => {
                     } `}
                     alt={movies.Title}
                     className="card--film__topFive"
+                    aria-label={`number ${i + 1}`}
                   />
                 </section>
               </>
@@ -78,15 +80,16 @@ const Film = ({ movies, i }: Props) => {
                       >
                         <section
                           className="card--movie_face --back "
-                          data-testid="card--movie_face--back"
-                          key={i}
+                          key={i * 2}
                           style={{ display: "grid" }}
                         >
                           <p style={{ fontWeight: "500" }}>
                             {res.Title.toUpperCase()}
                           </p>
                           <p>{res.Plot}</p>
-                          <p>{res.Genre}</p>
+                          <p 
+                          data-testid="film-genre"
+                          >{res.Genre}</p>
                         </section>
                       </Link>
                     )

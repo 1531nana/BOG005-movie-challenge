@@ -21,6 +21,7 @@ export const Search = ({
             aria-label="Search"
             onChange={handleInput}
             value={search}
+            data-testid="input--search"
           />
           <img
             src={searchImg}

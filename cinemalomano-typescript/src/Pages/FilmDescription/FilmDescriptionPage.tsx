@@ -30,6 +30,7 @@ export const FilmDescriptionPage = () => {
       <section className="homePage-sectionHeader">
         <Header />
       </section>
+      <>
       {!movie
         ? []
         : movie.map((res, i) => {
@@ -50,13 +51,16 @@ export const FilmDescriptionPage = () => {
                     <p className="card--container_year"> ({res.Year})</p>
                   </article>
                   <p className="card--container_plot">{res.Plot}</p>
-                  <article className="card--container_description">
-                    <p>
+                  <article className="card--container_description"
+                  data-testid='sectionFilmDetails'
+                  >
+                    <p >
                       <b>Genre:</b> {res.Genre}
                     </p>
                     <p>
                       {" "}
-                      <b> Director: </b>
+                      <b >
+                         Director: </b>
                       {res.Director}
                     </p>
                     <p>
@@ -75,6 +79,8 @@ export const FilmDescriptionPage = () => {
               </section>
             );
           })}
+      
+      </>
     </main>
   );
 };

@@ -2,8 +2,6 @@ import { makeRequestSearch } from "../../lib/request";
 import { useState, useEffect } from "react";
 import { Description } from "../../types";
 import { Home } from "../../Components/Home/Home";
-import home from "../../resources/home-modal.png";
-import { Link } from "react-router-dom";
 import { Header } from "../../Components/Header/Header";
 import { Search } from "../../Components/Search/Search";
 
@@ -39,11 +37,10 @@ export const AllSeries = () => {
         <Header />
         <Search search={search} handleInput={handleInput} />
       </div>
-      <Link to="/">
-        <img src={home} alt="home" className="home--surprise" />
-      </Link>
       <div className="homePage--container">
-        <h1 className="homePage--titleHome">{`ALL ${search.toUpperCase()} SERIES`}</h1>
+        <h1 className="homePage--titleHome"
+        data-testid='title--allSeries'
+        >{`ALL ${search.toUpperCase()} SERIES`}</h1>
         <Home
           movies={movies}
           totalResults={totalResults}
