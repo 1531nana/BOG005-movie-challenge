@@ -2,7 +2,7 @@
   "name": "cinemalomano-typescript",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/https://1531nana.github.io/BOG005-movie-challenge",
+  "homepage": "/build",
   "babel": {
     "presets": [
       [
