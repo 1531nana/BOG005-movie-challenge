@@ -2,6 +2,7 @@
   "name": "cinemalomano-typescript",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/build",
   "babel": {
     "presets": [
       [
