@@ -42,7 +42,7 @@
   "scripts": {
     "start": "react-scripts start",
     "predeploy": "npm run build",
-   "deploy": "gh-pages -b main -d build",
+    "deploy": "gh-pages -b main -d build",
     "build": "react-scripts build  && echo '/* /index.html 200' | cat >build/_redirects",
     "test": "react-scripts test --coverage --verbose",
     "eject": "react-scripts eject"
