@@ -27,7 +27,6 @@ export const AwardsMovies = () => {
         setPages(pages + 1);
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pages]);
 
   async function miFuncionAsincrona(id: number) {
@@ -52,7 +51,6 @@ export const AwardsMovies = () => {
 
   let acum: Description[] = [];
   if (moviesWithDetails) {
-    // eslint-disable-next-line array-callback-return
     moviesWithDetails.flat().map((movie) => {
       if (movie.valueOf() !== Boolean && acum.length < 5) {
         acum.push(movie);
